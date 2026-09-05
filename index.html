@@ -39,7 +39,6 @@
             letter-spacing: -0.022em;
         }
 
-        /* Announcement Bar Top */
         .announcement-bar {
             background-color: #071327;
             color: #F5F5F7;
@@ -56,7 +55,6 @@
             font-weight: 600;
         }
 
-        /* Header Navigation */
         header {
             position: fixed;
             top: 0;
@@ -165,7 +163,6 @@
             color: #FFFFFF !important;
         }
 
-        /* Hero Section */
         .hero {
             background-color: var(--sphs-navy);
             color: #FFFFFF;
@@ -206,7 +203,6 @@
             letter-spacing: -0.011em;
         }
 
-        /* Main Container */
         .main-container {
             max-width: 1020px;
             margin: 60px auto;
@@ -233,7 +229,6 @@
             margin-top: 4px;
         }
 
-        /* Announcements Section */
         .announcements-container {
             background-color: var(--apple-card);
             border-radius: var(--radius-xl);
@@ -317,7 +312,6 @@
             color: #C5221F;
         }
 
-        /* Tab Layout for Disciplines */
         .tabs-wrapper {
             background-color: var(--apple-card);
             border-radius: var(--radius-xl);
@@ -422,7 +416,6 @@
             color: var(--sphs-navy);
         }
 
-        /* Practice Sidebar */
         .resource-sidebar {
             background-color: #FAFAFC;
             border: 1px solid var(--apple-border);
@@ -468,7 +461,6 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
-        /* Calendar Section */
         .calendar-section {
             background-color: var(--apple-card);
             border-radius: var(--radius-xl);
@@ -493,7 +485,6 @@
             border: 0;
         }
 
-        /* Schedule Section */
         .schedule-section {
             background-color: var(--apple-card);
             border-radius: var(--radius-xl);
@@ -529,7 +520,6 @@
             border-bottom: none;
         }
 
-        /* Modal Popup */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -597,7 +587,6 @@
             cursor: pointer;
         }
 
-        /* Footer */
         footer {
             background-color: var(--sphs-navy);
             color: #86868B;
@@ -683,7 +672,7 @@
             <div class="announcements-container">
                 <div id="announcements-list">
                     <div class="empty-announcements" id="empty-msg">
-                        No current announcements.
+                        Loading announcements...
                     </div>
                 </div>
             </div>
@@ -906,21 +895,38 @@
         </div>
     </footer>
 
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
     <script>
-        // Load Announcements on Page Load
-        document.addEventListener('DOMContentLoaded', loadAnnouncements);
+        const firebaseConfig = {
+            apiKey: "AIzaSyD9VltyCeRUhg-bm2WstPmyi3SjZKZuX7g",
+            authDomain: "stp-uil-academics-website.firebaseapp.com",
+            databaseURL: "https://stp-uil-academics-website-default-rtdb.firebaseio.com",
+            projectId: "stp-uil-academics-website",
+            storageBucket: "stp-uil-academics-website.firebasestorage.app",
+            messagingSenderId: "160600046618",
+            appId: "1:160600046618:web:6c8dc42a0285dd466ca5a3",
+            measurementId: "G-8MFKDR5GS0"
+        };
 
-        function loadAnnouncements() {
-            const announcements = JSON.parse(localStorage.getItem('stp_announcements') || '[]');
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const annRef = db.ref('announcements');
+
+        annRef.on('value', (snapshot) => {
+            const data = snapshot.val();
             const list = document.getElementById('announcements-list');
+            list.innerHTML = '';
 
-            if (announcements.length > 0) {
-                list.innerHTML = '';
-                announcements.forEach((ann, index) => {
+            if (data) {
+                const keys = Object.keys(data).reverse();
+                keys.forEach((key) => {
+                    const ann = data[key];
                     const card = document.createElement('div');
                     card.className = 'announcement-card';
                     card.innerHTML = `
-                        <button class="btn-delete-ann" onclick="deleteAnnouncement(${index})">Delete</button>
+                        <button class="btn-delete-ann" onclick="deleteAnnouncement('${key}')">Delete</button>
                         <h4>${escapeHtml(ann.title)}</h4>
                         <div class="ann-meta">Posted on ${ann.date}</div>
                         <p>${escapeHtml(ann.body)}</p>
@@ -930,7 +936,7 @@
             } else {
                 list.innerHTML = `<div class="empty-announcements" id="empty-msg">No current announcements.</div>`;
             }
-        }
+        });
 
         function submitAnnouncement() {
             const title = document.getElementById('modal-title').value.trim();
@@ -942,21 +948,18 @@
             }
 
             const today = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            const newAnn = { title, body, date: today };
 
-            const announcements = JSON.parse(localStorage.getItem('stp_announcements') || '[]');
-            announcements.unshift(newAnn);
-            localStorage.setItem('stp_announcements', JSON.stringify(announcements));
+            annRef.push({
+                title: title,
+                body: body,
+                date: today
+            });
 
-            loadAnnouncements();
             closeModal();
         }
 
-        function deleteAnnouncement(index) {
-            let announcements = JSON.parse(localStorage.getItem('stp_announcements') || '[]');
-            announcements.splice(index, 1);
-            localStorage.setItem('stp_announcements', JSON.stringify(announcements));
-            loadAnnouncements();
+        function deleteAnnouncement(id) {
+            db.ref('announcements/' + id).remove();
         }
 
         function escapeHtml(str) {
@@ -965,7 +968,6 @@
             );
         }
 
-        // Tab Switching Logic
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             
@@ -983,7 +985,6 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // Header Scroll Effect
         const header = document.getElementById('main-header');
         const heroSection = document.getElementById('hero-section');
 
@@ -996,7 +997,6 @@
             }
         });
 
-        // Announcement Modal Functions
         function openModal() {
             document.getElementById('announcement-modal').style.display = 'flex';
         }
