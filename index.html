@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stony Point High School | UIL STEM Academics</title>
+    <title>Stony Point High School | UIL Academics</title>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -39,6 +39,7 @@
             letter-spacing: -0.022em;
         }
 
+        /* Announcement Bar */
         .announcement-bar {
             background-color: #071327;
             color: #F5F5F7;
@@ -55,6 +56,7 @@
             font-weight: 600;
         }
 
+        /* Header Navigation - Dynamic Scroll */
         header {
             position: fixed;
             top: 0;
@@ -64,9 +66,6 @@
             transition: var(--transition-smooth);
             background-color: var(--sphs-navy);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            min-height: 60px;
-            display: flex;
-            align-items: center;
         }
 
         header.scrolled {
@@ -76,37 +75,13 @@
             border-bottom: 1px solid var(--apple-border);
         }
 
-        /* Far left corner image */
-        .header-logo-tiger {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 38px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        /* Far right corner image */
-        .header-logo-uil {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 34px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        /* Original centered navigation layout */
         .nav-container {
-            max-width: 1080px;
-            width: 100%;
+            max-width: 1020px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 24px;
+            padding: 14px 24px;
         }
 
         .brand {
@@ -144,15 +119,9 @@
             color: var(--apple-text-primary);
         }
 
-        .nav-right-group {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 28px;
             list-style: none;
             align-items: center;
         }
@@ -196,6 +165,11 @@
             color: #FFFFFF !important;
         }
 
+        .btn-calendar:hover {
+            opacity: 0.9 !important;
+        }
+
+        /* Hero Section */
         .hero {
             background-color: var(--sphs-navy);
             color: #FFFFFF;
@@ -236,6 +210,7 @@
             letter-spacing: -0.011em;
         }
 
+        /* Main Container */
         .main-container {
             max-width: 1020px;
             margin: 60px auto;
@@ -243,10 +218,7 @@
         }
 
         .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
 
         .section-header h2 {
@@ -262,145 +234,7 @@
             margin-top: 4px;
         }
 
-        .announcements-container {
-            background-color: var(--apple-card);
-            border-radius: var(--radius-xl);
-            padding: 32px;
-            border: 1px solid var(--apple-border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-            margin-bottom: 48px;
-        }
-
-        .btn-add-announcement {
-            background-color: var(--sphs-gold);
-            color: var(--sphs-navy);
-            border: none;
-            padding: 9px 18px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
-
-        .btn-add-announcement:hover {
-            background-color: var(--sphs-gold-hover);
-        }
-
-        .empty-announcements {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--apple-text-secondary);
-            font-size: 1rem;
-            background-color: #FAFAFC;
-            border-radius: var(--radius-lg);
-            border: 1px dashed var(--apple-border);
-        }
-
-        .announcement-card {
-            background-color: #FAFAFC;
-            border: 1px solid var(--apple-border);
-            border-left: 4px solid var(--sphs-gold);
-            padding: 20px;
-            border-radius: var(--radius-lg);
-            margin-bottom: 16px;
-            position: relative;
-        }
-
-        .announcement-card:last-child {
-            margin-bottom: 0;
-        }
-
-        .announcement-card h4 {
-            font-size: 1.1rem;
-            color: var(--sphs-navy);
-            margin-bottom: 6px;
-        }
-
-        .announcement-card .ann-meta {
-            font-size: 0.78rem;
-            color: var(--apple-text-secondary);
-            margin-bottom: 10px;
-        }
-
-        .announcement-card p {
-            font-size: 0.92rem;
-            color: var(--apple-text-primary);
-            line-height: 1.5;
-        }
-
-        .ann-actions {
-            display: flex;
-            gap: 12px;
-            margin-top: 14px;
-            padding-top: 10px;
-            border-top: 1px solid var(--apple-border-subtle);
-        }
-
-        .btn-action {
-            background-color: #EFEFF4;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 14px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--sphs-navy);
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .btn-action:hover {
-            background-color: #E5E5EA;
-        }
-
-        .replies-container {
-            margin-top: 12px;
-            padding-left: 16px;
-            border-left: 2px solid var(--apple-border);
-        }
-
-        .reply-item {
-            background: #FFFFFF;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            margin-bottom: 6px;
-            border: 1px solid var(--apple-border-subtle);
-        }
-
-        .reply-input-box {
-            display: none;
-            margin-top: 10px;
-            gap: 8px;
-        }
-
-        .reply-input-box input {
-            flex: 1;
-            padding: 6px 12px;
-            border: 1px solid var(--apple-border);
-            border-radius: 12px;
-            font-size: 0.85rem;
-        }
-
-        .btn-delete-ann {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: none;
-            border: none;
-            color: var(--apple-text-secondary);
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .btn-delete-ann:hover {
-            color: #C5221F;
-        }
-
+        /* Tab Layout */
         .tabs-wrapper {
             background-color: var(--apple-card);
             border-radius: var(--radius-xl);
@@ -416,22 +250,19 @@
             border-bottom: 1px solid var(--apple-border);
             padding: 6px;
             gap: 6px;
-            overflow-x: auto;
         }
 
         .tab-btn {
             flex: 1;
-            min-width: 130px;
-            padding: 12px 16px;
+            padding: 12px 20px;
             background: none;
             border: none;
             border-radius: var(--radius-lg);
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             font-weight: 500;
             color: var(--apple-text-secondary);
             cursor: pointer;
             transition: var(--transition-smooth);
-            white-space: nowrap;
         }
 
         .tab-btn:hover {
@@ -454,6 +285,7 @@
             display: block;
         }
 
+        /* Content Grid */
         .event-grid {
             display: grid;
             grid-template-columns: 1.8fr 1.2fr;
@@ -499,17 +331,13 @@
             margin-bottom: 4px;
         }
 
-        .spec-item span, .spec-item a {
+        .spec-item span {
             font-size: 0.95rem;
             font-weight: 600;
             color: var(--sphs-navy);
-            text-decoration: none;
         }
 
-        .spec-item a:hover {
-            text-decoration: underline;
-        }
-
+        /* Practice & Resources */
         .resource-sidebar {
             background-color: #FAFAFC;
             border: 1px solid var(--apple-border);
@@ -555,6 +383,7 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
+        /* Calendar Section */
         .calendar-section {
             background-color: var(--apple-card);
             border-radius: var(--radius-xl);
@@ -564,13 +393,38 @@
             margin-bottom: 48px;
         }
 
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--sphs-navy);
+            color: #FFFFFF;
+            padding: 9px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-action:hover {
+            background-color: var(--sphs-navy-surface);
+        }
+
         .calendar-embed-container {
             width: 100%;
             height: 560px;
             border-radius: var(--radius-lg);
             overflow: hidden;
             border: 1px solid var(--apple-border);
-            margin-top: 20px;
         }
 
         .calendar-embed-container iframe {
@@ -579,6 +433,7 @@
             border: 0;
         }
 
+        /* Schedule Section */
         .schedule-section {
             background-color: var(--apple-card);
             border-radius: var(--radius-xl);
@@ -610,87 +465,23 @@
             color: var(--apple-text-primary);
         }
 
-        .schedule-table a {
-            color: var(--sphs-navy);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .schedule-table a:hover {
-            text-decoration: underline;
-        }
-
         .schedule-table tr:last-child td {
             border-bottom: none;
         }
 
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(4px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
+        .tag {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
         }
 
-        .modal-card {
-            background: var(--apple-card);
-            padding: 32px;
-            border-radius: var(--radius-xl);
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
+        .tag-ns { background: #EBF5FF; color: #0066CC; }
+        .tag-math { background: #FEF6E6; color: #9A7200; }
+        .tag-calc { background: #F2F4F7; color: #344054; }
 
-        .modal-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 16px;
-            color: var(--sphs-navy);
-        }
-
-        .modal-card input, .modal-card textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 14px;
-            border: 1px solid var(--apple-border);
-            border-radius: var(--radius-sm);
-            font-size: 0.9rem;
-        }
-
-        .modal-card textarea {
-            height: 100px;
-            resize: vertical;
-        }
-
-        .modal-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 12px;
-        }
-
-        .btn-cancel {
-            background: #E5E5EA;
-            color: var(--apple-text-primary);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 16px;
-            cursor: pointer;
-        }
-
-        .btn-submit {
-            background: var(--sphs-navy);
-            color: #FFFFFF;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 16px;
-            cursor: pointer;
-        }
-
+        /* Footer */
         footer {
             background-color: var(--sphs-navy);
             color: #86868B;
@@ -722,8 +513,33 @@
             text-align: center;
         }
 
-        @media (max-width: 1200px) {
-            .nav-container { padding: 10px 80px; }
+        /* Fixed Corner Emblems */
+        .corner-mark {
+            position: fixed;
+            top: 7px;
+            width: auto;
+            height: 44px;
+            z-index: 1001;          /* above the header bar */
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .corner-mark.left  { left: 20px; }
+        .corner-mark.right { right: 20px; }
+
+        @media (max-width: 1100px) {
+            .corner-mark { height: 36px; top: 11px; }
+            .corner-mark.left  { left: 10px; }
+            .corner-mark.right { right: 10px; }
+        }
+
+        @media (max-width: 720px) {
+            .corner-mark { display: none; }
+        }
+
+        @media print {
+            .corner-mark { display: none; }
         }
 
         @media (max-width: 800px) {
@@ -731,82 +547,52 @@
             .event-grid { grid-template-columns: 1fr; }
             .specs-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
-            .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
-            .nav-container { padding: 10px 16px; justify-content: center; }
-            .header-logo-tiger, .header-logo-uil { height: 28px; }
         }
     </style>
 </head>
 <body>
 
     <div class="announcement-bar">
-        Weekly Practice Schedule: <span>Mon & Fri</span> (Number Sense) | <span>Wed</span> (Calculator Apps) | <span>Thu</span> (Mathematics)
+        Weekly Practices: <span>Mon & Fri</span> (Number Sense) | <span>Wed</span> (Calc Apps) | <span>Thu</span> (Math)
     </div>
 
     <header id="main-header">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAC8CAYAAABm62L6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAedEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlx... (embedded fully below)" id="img-tiger" alt="Stony Point Tiger Logo" class="header-logo-tiger">
-
         <div class="nav-container">
             <a href="#" class="brand">
                 <span class="brand-badge">STP</span>
-                <span class="brand-text">Stony Point UIL STEM Academics</span>
+                <span class="brand-text">Stony Point UIL Academics</span>
             </a>
-            <div class="nav-right-group">
-                <ul class="nav-links">
-                    <li><a href="#announcements-section">Announcements</a></li>
-                    <li><a href="#events">UIL STEM Information</a></li>
-                    <li><a href="#calendar">Calendar</a></li>
-                    <li><a href="#schedule">Schedule & Rooms</a></li>
-                    <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">Master Drive</a></li>
-                    <li><a href="https://calendar.google.com/calendar/u/0?cid=YmQyZjkzNzcyOTAyOGZjZTM4NGMzZjhlN2Q3ZWYzY2NkMTlhZTJkZGU3NTZjYzZlZDA3NGE0ZDQ2NmVhZmQ4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="btn-calendar">Add Calendar</a></li>
-                </ul>
-            </div>
+            <ul class="nav-links">
+                <li><a href="#events">Disciplines</a></li>
+                <li><a href="#calendar">Calendar</a></li>
+                <li><a href="#schedule">Practice Schedule</a></li>
+                <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">Master Drive</a></li>
+                <li><a href="https://calendar.google.com/calendar/u/0?cid=YmQyZjkzNzcyOTAyOGZjZTM4NGMzZjhlN2Q3ZWYzY2NkMTlhZTJkZGU3NTZjYzZlZDA3NGE0ZDQ2NmVhZmQ4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="btn-calendar">Add Calendar</a></li>
+            </ul>
         </div>
-
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAA... (embedded fully below)" id="img-uil" alt="UIL Academics Logo" class="header-logo-uil">
     </header>
 
     <section class="hero" id="hero-section">
         <div class="hero-container">
             <p class="hero-eyebrow">Stony Point High School</p>
-            <h1 class="hero-title">UIL STEM Academics</h1>
-            <p class="hero-subtitle">Official hub for practice schedules, team coaches, room locations, and competition resources for Number Sense, Calculator Applications, and Mathematics.</p>
+            <h1 class="hero-title">UIL Academics</h1>
+            <p class="hero-subtitle">Welcome to the Stony Point High School UIL Academics Website</p>
         </div>
     </section>
 
     <main class="main-container">
 
-        <section id="announcements-section">
-            <div class="section-header">
-                <div>
-                    <h2>Announcements</h2>
-                    <p>Latest updates and reminders for UIL STEM team members.</p>
-                </div>
-                <button class="btn-add-announcement" onclick="openModal()">+ Add Announcement</button>
-            </div>
-
-            <div class="announcements-container">
-                <div id="announcements-list">
-                    <div class="empty-announcements" id="empty-msg">
-                        Loading announcements...
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="events">
             <div class="section-header">
-                <div>
-                    <h2>UIL STEM Information</h2>
-                    <p>Select a category to view meeting times, room numbers, and team details.</p>
-                </div>
+                <h2>STEM Disciplines</h2>
+                <p>Select a category to view contest formats, resources, and practice links.</p>
             </div>
 
             <div class="tabs-wrapper">
                 <div class="tab-buttons">
                     <button class="tab-btn active" onclick="openTab(event, 'numbersense-tab')">Number Sense</button>
                     <button class="tab-btn" onclick="openTab(event, 'math-tab')">Mathematics</button>
-                    <button class="tab-btn" onclick="openTab(event, 'calculator-tab')">Calculator Apps</button>
+                    <button class="tab-btn" onclick="openTab(event, 'calculator-tab')">Calculator Applications</button>
                 </div>
 
                 <div id="numbersense-tab" class="tab-content active">
@@ -817,20 +603,20 @@
 
                             <div class="specs-grid">
                                 <div class="spec-item">
-                                    <label>Coaches</label>
-                                    <span>Richard Squiers & Greg Anderson</span>
+                                    <label>Time Limit</label>
+                                    <span>10 Minutes</span>
                                 </div>
                                 <div class="spec-item">
-                                    <label>Coach Email</label>
-                                    <a href="mailto:richard_squiers@roundrockisd.org">richard_squiers@roundrockisd.org</a>
+                                    <label>Format</label>
+                                    <span>80 Direct Problems</span>
                                 </div>
                                 <div class="spec-item">
-                                    <label>Meeting Location</label>
-                                    <span>Room C158</span>
+                                    <label>Scoring</label>
+                                    <span>+5 Correct, -4 Incorrect</span>
                                 </div>
                                 <div class="spec-item">
-                                    <label>Meeting Times</label>
-                                    <span>Mon & Fri (7:30 - 8:30 AM)</span>
+                                    <label>Practice Sessions</label>
+                                    <span>Mon & Fri (Before School)</span>
                                 </div>
                             </div>
                         </div>
@@ -839,10 +625,11 @@
                             <h4>Practice Links & Resources</h4>
                             <ul class="resource-list">
                                 <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">STP UIL Master Drive</a></li>
-                                <li><a href="https://drive.google.com/drive/u/1/folders/1H1SA569izLxskD3cdIcoxKg5GN8fz_Ci" target="_blank">Number Sense Drive Folder</a></li>
-                                <li><a href="https://project-sense.vercel.app/login" target="_blank">Project Sense Portal</a></li>
-                                <li><a href="https://arithmetic.zetamac.com/" target="_blank">Zetamac Speed Trainer</a></li>
-                                <li><a href="https://monkeysense.me/" target="_blank">Monkeysense Practice</a></li>
+                                <li><a href="https://drive.google.com/drive/u/1/folders/1H1SA569izLxskD3cdIcoxKg5GN8fz_Ci" target="_blank">STP UIL Number Sense Drive</a></li>
+                                <li><a href="https://project-sense.vercel.app/login" target="_blank">Project Sense</a></li>
+                                <li><a href="https://arithmetic.zetamac.com/" target="_blank">Zetamac Arithmetic</a></li>
+                                <li><a href="https://monkeysense.me/" target="_blank">Monkeysense</a></li>
+                                <li><a href="https://chelonian.neocities.org/numbersense/tests?fbclid=PAVERFWATUh3JwZG9mAmV4dG4DYWVtAjEwAHNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABpw8cX_hDOYMC2VzVGfROd1b64IDW-aCj7G8lGcYBCsqrGTQ6i14aUXFCCJq7_aem_sbKVHJi84xXKDz3-vja3cw" target="_blank">Test Archive</a></li>
                             </ul>
                         </div>
                     </div>
@@ -856,20 +643,20 @@
 
                             <div class="specs-grid">
                                 <div class="spec-item">
-                                    <label>Coaches</label>
-                                    <span>Richard Squiers & Greg Anderson</span>
+                                    <label>Time Limit</label>
+                                    <span>40 Minutes</span>
                                 </div>
                                 <div class="spec-item">
-                                    <label>Coach Email</label>
-                                    <a href="mailto:richard_squiers@roundrockisd.org">richard_squiers@roundrockisd.org</a>
+                                    <label>Format</label>
+                                    <span>60 Multiple Choice</span>
                                 </div>
                                 <div class="spec-item">
-                                    <label>Meeting Location</label>
-                                    <span>Room C158</span>
+                                    <label>Scoring</label>
+                                    <span>+6 Correct, -2 Incorrect</span>
                                 </div>
                                 <div class="spec-item">
-                                    <label>Meeting Times</label>
-                                    <span>Thursday (4:30 - 5:30 PM)</span>
+                                    <label>Practice Sessions</label>
+                                    <span>Thursday (After School)</span>
                                 </div>
                             </div>
                         </div>
@@ -892,20 +679,20 @@
 
                             <div class="specs-grid">
                                 <div class="spec-item">
-                                    <label>Coach</label>
-                                    <span>Kim Fulton</span>
+                                    <label>Time Limit</label>
+                                    <span>30 Minutes</span>
                                 </div>
                                 <div class="spec-item">
-                                    <label>Coach Email</label>
-                                    <a href="mailto:kimberly_fulton@roundrockisd.org">kimberly_fulton@roundrockisd.org</a>
+                                    <label>Format</label>
+                                    <span>70 Questions</span>
                                 </div>
                                 <div class="spec-item">
-                                    <label>Meeting Location</label>
-                                    <span>Room C286</span>
+                                    <label>Scoring</label>
+                                    <span>+5 Correct, -2 Incorrect</span>
                                 </div>
                                 <div class="spec-item">
-                                    <label>Meeting Times</label>
-                                    <span>Wednesday (7:45 - 8:45 AM)</span>
+                                    <label>Practice Sessions</label>
+                                    <span>Wednesday (Before School)</span>
                                 </div>
                             </div>
                         </div>
@@ -924,12 +711,12 @@
         </section>
 
         <section id="calendar" class="calendar-section">
-            <div class="section-header">
+            <div class="calendar-header">
                 <div>
                     <h2>Academic Calendar</h2>
-                    <p>Upcoming practice sessions and contest dates.</p>
+                    <p class="section-header p">Practice schedule and competition dates.</p>
                 </div>
-                <a href="https://calendar.google.com/calendar/u/0?cid=YmQyZjkzNzcyOTAyOGZjZTM4NGMzZjhlN2Q3ZWYzY2NkMTlhZTJkZGU3NTZjYzZlZDA3NGE0ZDQ2NmVhZmQ4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="btn-add-announcement" style="text-decoration:none;">
+                <a href="https://calendar.google.com/calendar/u/0?cid=YmQyZjkzNzcyOTAyOGZjZTM4NGMzZjhlN2Q3ZWYzY2NkMTlhZTJkZGU3NTZjYzZlZDA3NGE0ZDQ2NmVhZmQ4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="btn-action">
                     Add to Personal Calendar
                 </a>
             </div>
@@ -941,46 +728,42 @@
 
         <section id="schedule" class="schedule-section">
             <div class="section-header">
-                <div>
-                    <h2>Weekly Practice & Room Schedule</h2>
-                    <p>Updated team meeting times and room locations for STEM disciplines.</p>
-                </div>
+                <h2>Weekly Practice Schedule</h2>
+                <p>Regular team practice sessions held in Room 214.</p>
             </div>
             <table class="schedule-table">
                 <thead>
                     <tr>
-                        <th>Subject / Event</th>
-                        <th>Coach</th>
-                        <th>Email Contact</th>
-                        <th>Meeting Location</th>
-                        <th>Meeting Day</th>
-                        <th>Meeting Time</th>
+                        <th>Day</th>
+                        <th>Time</th>
+                        <th>Event</th>
+                        <th>Location</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Number Sense</strong></td>
-                        <td>Richard Squiers & Greg Anderson</td>
-                        <td><a href="mailto:richard_squiers@roundrockisd.org">richard_squiers@roundrockisd.org</a></td>
-                        <td>Room C158</td>
-                        <td>Mondays & Fridays</td>
-                        <td>7:30 - 8:30 AM</td>
+                        <td><strong>Monday</strong></td>
+                        <td>Before School</td>
+                        <td><span class="tag tag-ns">Number Sense</span></td>
+                        <td>Room 214</td>
                     </tr>
                     <tr>
-                        <td><strong>Calculator Applications</strong></td>
-                        <td>Kim Fulton</td>
-                        <td><a href="mailto:kimberly_fulton@roundrockisd.org">kimberly_fulton@roundrockisd.org</a></td>
-                        <td>Room C286</td>
-                        <td>Wednesday</td>
-                        <td>7:45 - 8:45 AM</td>
+                        <td><strong>Wednesday</strong></td>
+                        <td>Before School</td>
+                        <td><span class="tag tag-calc">Calculator Applications</span></td>
+                        <td>Room 214</td>
                     </tr>
                     <tr>
-                        <td><strong>Mathematics</strong></td>
-                        <td>Richard Squiers & Greg Anderson</td>
-                        <td><a href="mailto:richard_squiers@roundrockisd.org">richard_squiers@roundrockisd.org</a></td>
-                        <td>Room C158</td>
-                        <td>Thursday</td>
-                        <td>4:30 - 5:30 PM</td>
+                        <td><strong>Thursday</strong></td>
+                        <td>After School</td>
+                        <td><span class="tag tag-math">Mathematics</span></td>
+                        <td>Room 214</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Friday</strong></td>
+                        <td>Before School</td>
+                        <td><span class="tag tag-ns">Number Sense</span></td>
+                        <td>Room 214</td>
                     </tr>
                 </tbody>
             </table>
@@ -988,22 +771,10 @@
 
     </main>
 
-    <div class="modal-overlay" id="announcement-modal">
-        <div class="modal-card">
-            <h3>Add Announcement</h3>
-            <input type="text" id="modal-title" placeholder="Announcement Title">
-            <textarea id="modal-body" placeholder="Write announcement details..."></textarea>
-            <div class="modal-actions">
-                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-                <button class="btn-submit" onclick="submitAnnouncement()">Post</button>
-            </div>
-        </div>
-    </div>
-
     <footer>
         <div class="footer-container">
             <div class="footer-brand">
-                <p>Stony Point High School UIL STEM Academics</p>
+                <p>Stony Point High School UIL Academics</p>
                 <span style="color: #86868B;">1800 Tiger Trail, Round Rock, TX 78664</span>
             </div>
             <div>
@@ -1011,130 +782,12 @@
             </div>
         </div>
         <div class="footer-copy">
-            Stony Point High School UIL STEM Academics Program
+            Stony Point High School UIL Academics Program
         </div>
     </footer>
 
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
-
     <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyD9VltyCeRUhg-bm2WstPmyi3SjZKZuX7g",
-            authDomain: "stp-uil-academics-website.firebaseapp.com",
-            databaseURL: "https://stp-uil-academics-website-default-rtdb.firebaseio.com",
-            projectId: "stp-uil-academics-website",
-            storageBucket: "stp-uil-academics-website.firebasestorage.app",
-            messagingSenderId: "160600046618",
-            appId: "1:160600046618:web:6c8dc42a0285dd466ca5a3",
-            measurementId: "G-8MFKDR5GS0"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.database();
-        const annRef = db.ref('announcements');
-
-        annRef.on('value', (snapshot) => {
-            const data = snapshot.val();
-            const list = document.getElementById('announcements-list');
-            list.innerHTML = '';
-
-            if (data) {
-                const keys = Object.keys(data).reverse();
-                keys.forEach((key) => {
-                    const ann = data[key];
-                    const likes = ann.likes || 0;
-                    
-                    let repliesHtml = '';
-                    if (ann.replies) {
-                        Object.keys(ann.replies).forEach(rKey => {
-                            const reply = ann.replies[rKey];
-                            repliesHtml += `<div class="reply-item">${escapeHtml(reply.text)}</div>`;
-                        });
-                    }
-
-                    const card = document.createElement('div');
-                    card.className = 'announcement-card';
-                    card.innerHTML = `
-                        <button class="btn-delete-ann" onclick="deleteAnnouncement('${key}')">Delete</button>
-                        <h4>${escapeHtml(ann.title)}</h4>
-                        <div class="ann-meta">Posted on ${ann.date}</div>
-                        <p>${escapeHtml(ann.body)}</p>
-                        
-                        <div class="ann-actions">
-                            <button class="btn-action" onclick="likeAnnouncement('${key}')">👍 ${likes}</button>
-                            <button class="btn-action" onclick="toggleReplyBox('${key}')">Reply</button>
-                        </div>
-
-                        <div class="reply-input-box" id="reply-box-${key}">
-                            <input type="text" id="reply-input-${key}" placeholder="Write a reply...">
-                            <button class="btn-action" onclick="sendReply('${key}')">Send</button>
-                        </div>
-
-                        ${repliesHtml ? `<div class="replies-container">${repliesHtml}</div>` : ''}
-                    `;
-                    list.appendChild(card);
-                });
-            } else {
-                list.innerHTML = `<div class="empty-announcements" id="empty-msg">No current announcements.</div>`;
-            }
-        });
-
-        function submitAnnouncement() {
-            const title = document.getElementById('modal-title').value.trim();
-            const body = document.getElementById('modal-body').value.trim();
-
-            if (!title || !body) {
-                alert('Please fill out both the title and details.');
-                return;
-            }
-
-            const today = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-
-            annRef.push({
-                title: title,
-                body: body,
-                date: today,
-                likes: 0
-            });
-
-            closeModal();
-        }
-
-        function likeAnnouncement(id) {
-            db.ref('announcements/' + id + '/likes').transaction((likes) => {
-                return (likes || 0) + 1;
-            });
-        }
-
-        function toggleReplyBox(id) {
-            const box = document.getElementById('reply-box-' + id);
-            box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        function sendReply(id) {
-            const input = document.getElementById('reply-input-' + id);
-            const text = input.value.trim();
-            if (!text) return;
-
-            db.ref('announcements/' + id + '/replies').push({
-                text: text,
-                date: new Date().toLocaleDateString()
-            });
-
-            input.value = '';
-        }
-
-        function deleteAnnouncement(id) {
-            db.ref('announcements/' + id).remove();
-        }
-
-        function escapeHtml(str) {
-            return str.replace(/[&<>'"]/g, 
-                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
-            );
-        }
-
+        // Tab switching logic
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             
@@ -1152,6 +805,7 @@
             evt.currentTarget.classList.add("active");
         }
 
+        // Dynamic Header Styling on Scroll
         const header = document.getElementById('main-header');
         const heroSection = document.getElementById('hero-section');
 
@@ -1163,16 +817,9 @@
                 header.classList.remove('scrolled');
             }
         });
-
-        function openModal() {
-            document.getElementById('announcement-modal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('announcement-modal').style.display = 'none';
-            document.getElementById('modal-title').value = '';
-            document.getElementById('modal-body').value = '';
-        }
     </script>
+
+    <img class="corner-mark left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAO8AAADwCAYAAADo8DP3AAEAAEl..." alt="Stony Point Emblem Left">
+    <img class="corner-mark right" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAO8AAADwCAYAAADo8DP3AAEAAEl..." alt="Stony Point Emblem Right">
 </body>
 </html>
