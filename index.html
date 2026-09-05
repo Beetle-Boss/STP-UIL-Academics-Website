@@ -512,20 +512,6 @@
             border-bottom: none;
         }
 
-        .tag {
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            display: inline-block;
-        }
-
-        .tag-ns { background: #EBF5FF; color: #0066CC; }
-        .tag-math { background: #FEF6E6; color: #9A7200; }
-        .tag-calc { background: #F2F4F7; color: #344054; }
-        .tag-sci { background: #E6F4EA; color: #137333; }
-        .tag-humanities { background: #FCE8E6; color: #C5221F; }
-
         /* Modal Popup */
         .modal-overlay {
             display: none;
@@ -638,14 +624,14 @@
 <body>
 
     <div class="announcement-bar">
-        Weekly Practice Schedule: <span>Mon & Fri</span> (Number Sense) | <span>Wed</span> (Calc, Sci, Debate, Writing, Acct) | <span>Thu</span> (Math)
+        Weekly Practice Schedule: <span>Mon & Fri</span> (Number Sense) | <span>Wed</span> (Calculator Apps) | <span>Thu</span> (Mathematics)
     </div>
 
     <header id="main-header">
         <div class="nav-container">
             <a href="#" class="brand">
                 <span class="brand-badge">STP</span>
-                <span class="brand-text">Stony Point UIL Academics</span>
+                <span class="brand-text">Stony Point UIL Math</span>
             </a>
             <ul class="nav-links">
                 <li><a href="#announcements-section">Announcements</a></li>
@@ -661,8 +647,8 @@
     <section class="hero" id="hero-section">
         <div class="hero-container">
             <p class="hero-eyebrow">Stony Point High School</p>
-            <h1 class="hero-title">UIL Academics</h1>
-            <p class="hero-subtitle">Official hub for practice schedules, team coaches, room locations, and competition resources.</p>
+            <h1 class="hero-title">UIL Math Academics</h1>
+            <p class="hero-subtitle">Official hub for practice schedules, team coaches, room locations, and competition resources for Number Sense, Calculator Applications, and Mathematics.</p>
         </div>
     </section>
 
@@ -672,7 +658,7 @@
             <div class="section-header">
                 <div>
                     <h2>Announcements</h2>
-                    <p>Latest updates and reminders for UIL Academic team members.</p>
+                    <p>Latest updates and reminders for UIL Math team members.</p>
                 </div>
                 <button class="btn-add-announcement" onclick="openModal()">+ Add Announcement</button>
             </div>
@@ -689,7 +675,7 @@
         <section id="events">
             <div class="section-header">
                 <div>
-                    <h2>UIL Disciplines & Coaches</h2>
+                    <h2>UIL Math Disciplines & Coaches</h2>
                     <p>Select a category to view meeting times, room numbers, and team details.</p>
                 </div>
             </div>
@@ -699,8 +685,6 @@
                     <button class="tab-btn active" onclick="openTab(event, 'numbersense-tab')">Number Sense</button>
                     <button class="tab-btn" onclick="openTab(event, 'math-tab')">Mathematics</button>
                     <button class="tab-btn" onclick="openTab(event, 'calculator-tab')">Calculator Apps</button>
-                    <button class="tab-btn" onclick="openTab(event, 'science-tab')">Science</button>
-                    <button class="tab-btn" onclick="openTab(event, 'humanities-tab')">Writing & Debate</button>
                 </div>
 
                 <div id="numbersense-tab" class="tab-content active">
@@ -814,78 +798,6 @@
                     </div>
                 </div>
 
-                <div id="science-tab" class="tab-content">
-                    <div class="event-grid">
-                        <div class="event-main">
-                            <h3>Science</h3>
-                            <p class="event-description">Challenges students in biology, chemistry, and physics with advanced concepts and problem-solving scenarios.</p>
-
-                            <div class="specs-grid">
-                                <div class="spec-item">
-                                    <label>Coach</label>
-                                    <span>Esther Jeong</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Meeting Location</label>
-                                    <span>Room B258</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Meeting Times</label>
-                                    <span>Wednesday (4:30 - 5:30 PM)</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Format</label>
-                                    <span>2 Hours / 60 MC Questions</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="resource-sidebar">
-                            <h4>Resources</h4>
-                            <ul class="resource-list">
-                                <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">STP UIL Master Drive</a></li>
-                                <li><a href="https://www.uiltexas.org/academics/stem/science" target="_blank">UIL Official Science Page</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="humanities-tab" class="tab-content">
-                    <div class="event-grid">
-                        <div class="event-main">
-                            <h3>Writing, Debate & Journalism</h3>
-                            <p class="event-description">Covers UIL events including Ready Writing, Spelling & Vocabulary, Journalism, and Speech & Debate.</p>
-
-                            <div class="specs-grid">
-                                <div class="spec-item">
-                                    <label>Debate Coach</label>
-                                    <span>Veronica Estrada (B104)</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Writing Coach</label>
-                                    <span>Sara Wyatt (C165)</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Journalism Coach</label>
-                                    <span>Zoe Riemer (A209)</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>One Act Play</label>
-                                    <span>Sunshine Parsons (F125)</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="resource-sidebar">
-                            <h4>Resources</h4>
-                            <ul class="resource-list">
-                                <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">STP UIL Master Drive</a></li>
-                                <li><a href="https://www.uiltexas.org/academics" target="_blank">UIL Academics Main Site</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
 
@@ -909,7 +821,7 @@
             <div class="section-header">
                 <div>
                     <h2>Weekly Practice & Room Schedule</h2>
-                    <p>Updated team meeting times and room locations across all subjects.</p>
+                    <p>Updated team meeting times and room locations for math disciplines.</p>
                 </div>
             </div>
             <table class="schedule-table">
@@ -938,74 +850,11 @@
                         <td>7:45 - 8:45 AM</td>
                     </tr>
                     <tr>
-                        <td><strong>Ready Writing</strong></td>
-                        <td>Sara Wyatt</td>
-                        <td>Room C165</td>
-                        <td>Wednesday</td>
-                        <td>7:45 - 8:45 AM</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Vocab & Spelling</strong></td>
-                        <td>Sara Wyatt</td>
-                        <td>Room C165</td>
-                        <td>Wednesday</td>
-                        <td>7:45 - 8:45 AM</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Journalism</strong></td>
-                        <td>Zoe Riemer</td>
-                        <td>Room A209</td>
-                        <td>Wednesday</td>
-                        <td>8:00 - 8:50 AM</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Accounting</strong></td>
-                        <td>Jeanne Hammond</td>
-                        <td>Room D101</td>
-                        <td>Wednesday</td>
-                        <td>4:30 - 5:30 PM</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Science</strong></td>
-                        <td>Esther Jeong</td>
-                        <td>Room B258</td>
-                        <td>Wednesday</td>
-                        <td>4:30 - 5:30 PM</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Debate</strong></td>
-                        <td>Veronica Estrada</td>
-                        <td>Room B104</td>
-                        <td>Wednesday</td>
-                        <td>4:30 - 5:30 PM</td>
-                    </tr>
-                    <tr>
                         <td><strong>Mathematics</strong></td>
                         <td>Richard Squiers</td>
                         <td>Room C158</td>
                         <td>Thursday</td>
                         <td>4:30 - 5:30 PM</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Computer Science</strong></td>
-                        <td>David Encinia</td>
-                        <td>Room C284</td>
-                        <td>TBD</td>
-                        <td>TBD</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Social Studies</strong></td>
-                        <td>Noel Breger</td>
-                        <td>Room C221</td>
-                        <td>TBD</td>
-                        <td>TBD</td>
-                    </tr>
-                    <tr>
-                        <td><strong>One Act Play</strong></td>
-                        <td>Sunshine Parsons</td>
-                        <td>Room F125</td>
-                        <td>TBD</td>
-                        <td>TBD</td>
                     </tr>
                 </tbody>
             </table>
