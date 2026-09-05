@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stony Point High School | UIL Academics</title>
+    <title>Stony Point High School | UIL STEM Academics</title>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -74,19 +74,32 @@
         }
 
         .nav-container {
-            max-width: 1020px;
+            max-width: 1080px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 24px;
+            padding: 10px 24px;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
+        }
+
+        .header-logo-tiger {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-logo-uil {
+            height: 34px;
+            width: auto;
+            object-fit: contain;
+            margin-left: 12px;
         }
 
         .brand-badge {
@@ -117,9 +130,15 @@
             color: var(--apple-text-primary);
         }
 
+        .nav-right-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 20px;
             list-style: none;
             align-items: center;
         }
@@ -296,6 +315,62 @@
             line-height: 1.5;
         }
 
+        .ann-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 1px solid var(--apple-border-subtle);
+        }
+
+        .btn-action {
+            background-color: #EFEFF4;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--sphs-navy);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-action:hover {
+            background-color: #E5E5EA;
+        }
+
+        .replies-container {
+            margin-top: 12px;
+            padding-left: 16px;
+            border-left: 2px solid var(--apple-border);
+        }
+
+        .reply-item {
+            background: #FFFFFF;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            border: 1px solid var(--apple-border-subtle);
+        }
+
+        .reply-input-box {
+            display: none;
+            margin-top: 10px;
+            gap: 8px;
+        }
+
+        .reply-input-box input {
+            flex: 1;
+            padding: 6px 12px;
+            border: 1px solid var(--apple-border);
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
         .btn-delete-ann {
             position: absolute;
             top: 16px;
@@ -410,10 +485,15 @@
             margin-bottom: 4px;
         }
 
-        .spec-item span {
+        .spec-item span, .spec-item a {
             font-size: 0.95rem;
             font-weight: 600;
             color: var(--sphs-navy);
+            text-decoration: none;
+        }
+
+        .spec-item a:hover {
+            text-decoration: underline;
         }
 
         .resource-sidebar {
@@ -514,6 +594,16 @@
             border-bottom: 1px solid var(--apple-border-subtle);
             font-size: 0.9rem;
             color: var(--apple-text-primary);
+        }
+
+        .schedule-table a {
+            color: var(--sphs-navy);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .schedule-table a:hover {
+            text-decoration: underline;
         }
 
         .schedule-table tr:last-child td {
@@ -636,17 +726,21 @@
     <header id="main-header">
         <div class="nav-container">
             <a href="#" class="brand">
+                <img src="image_6d3e8b.png" alt="Stony Point Tiger Logo" class="header-logo-tiger">
                 <span class="brand-badge">STP</span>
-                <span class="brand-text">Stony Point UIL Math</span>
+                <span class="brand-text">Stony Point UIL STEM Academics</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#announcements-section">Announcements</a></li>
-                <li><a href="#events">UIL Stem Information</a></li>
-                <li><a href="#calendar">Calendar</a></li>
-                <li><a href="#schedule">Schedule & Rooms</a></li>
-                <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">Master Drive</a></li>
-                <li><a href="https://calendar.google.com/calendar/u/0?cid=YmQyZjkzNzcyOTAyOGZjZTM4NGMzZjhlN2Q3ZWYzY2NkMTlhZTJkZGU3NTZjYzZlZDA3NGE0ZDQ2NmVhZmQ4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="btn-calendar">Add Calendar</a></li>
-            </ul>
+            <div class="nav-right-group">
+                <ul class="nav-links">
+                    <li><a href="#announcements-section">Announcements</a></li>
+                    <li><a href="#events">UIL STEM Information</a></li>
+                    <li><a href="#calendar">Calendar</a></li>
+                    <li><a href="#schedule">Schedule & Rooms</a></li>
+                    <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">Master Drive</a></li>
+                    <li><a href="https://calendar.google.com/calendar/u/0?cid=YmQyZjkzNzcyOTAyOGZjZTM4NGMzZjhlN2Q3ZWYzY2NkMTlhZTJkZGU3NTZjYzZlZDA3NGE0ZDQ2NmVhZmQ4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="btn-calendar">Add Calendar</a></li>
+                </ul>
+                <img src="image_6d3f03.png" alt="UIL Academics Logo" class="header-logo-uil">
+            </div>
         </div>
     </header>
 
@@ -664,7 +758,7 @@
             <div class="section-header">
                 <div>
                     <h2>Announcements</h2>
-                    <p>Latest updates and reminders for UIL Math team members.</p>
+                    <p>Latest updates and reminders for UIL STEM team members.</p>
                 </div>
                 <button class="btn-add-announcement" onclick="openModal()">+ Add Announcement</button>
             </div>
@@ -681,7 +775,7 @@
         <section id="events">
             <div class="section-header">
                 <div>
-                    <h2>UIL Stem information</h2>
+                    <h2>UIL STEM Information</h2>
                     <p>Select a category to view meeting times, room numbers, and team details.</p>
                 </div>
             </div>
@@ -701,8 +795,12 @@
 
                             <div class="specs-grid">
                                 <div class="spec-item">
-                                    <label>Coach</label>
-                                    <span>Richard Squiers</span>
+                                    <label>Coaches</label>
+                                    <span>Richard Squiers & Greg Anderson</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Coach Email</label>
+                                    <a href="mailto:richard_squiers@roundrockisd.org">richard_squiers@roundrockisd.org</a>
                                 </div>
                                 <div class="spec-item">
                                     <label>Meeting Location</label>
@@ -711,10 +809,6 @@
                                 <div class="spec-item">
                                     <label>Meeting Times</label>
                                     <span>Mon & Fri (7:30 - 8:30 AM)</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Format</label>
-                                    <span>10 Min / 80 Questions</span>
                                 </div>
                             </div>
                         </div>
@@ -740,8 +834,12 @@
 
                             <div class="specs-grid">
                                 <div class="spec-item">
-                                    <label>Coach</label>
-                                    <span>Richard Squiers</span>
+                                    <label>Coaches</label>
+                                    <span>Richard Squiers & Greg Anderson</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Coach Email</label>
+                                    <a href="mailto:richard_squiers@roundrockisd.org">richard_squiers@roundrockisd.org</a>
                                 </div>
                                 <div class="spec-item">
                                     <label>Meeting Location</label>
@@ -750,10 +848,6 @@
                                 <div class="spec-item">
                                     <label>Meeting Times</label>
                                     <span>Thursday (4:30 - 5:30 PM)</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Format</label>
-                                    <span>40 Min / 60 MC Questions</span>
                                 </div>
                             </div>
                         </div>
@@ -780,16 +874,16 @@
                                     <span>Kim Fulton</span>
                                 </div>
                                 <div class="spec-item">
+                                    <label>Coach Email</label>
+                                    <a href="mailto:kimberly_fulton@roundrockisd.org">kimberly_fulton@roundrockisd.org</a>
+                                </div>
+                                <div class="spec-item">
                                     <label>Meeting Location</label>
                                     <span>Room C286</span>
                                 </div>
                                 <div class="spec-item">
                                     <label>Meeting Times</label>
                                     <span>Wednesday (7:45 - 8:45 AM)</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Format</label>
-                                    <span>30 Min / 70 Questions</span>
                                 </div>
                             </div>
                         </div>
@@ -835,6 +929,7 @@
                     <tr>
                         <th>Subject / Event</th>
                         <th>Coach</th>
+                        <th>Email Contact</th>
                         <th>Meeting Location</th>
                         <th>Meeting Day</th>
                         <th>Meeting Time</th>
@@ -843,7 +938,8 @@
                 <tbody>
                     <tr>
                         <td><strong>Number Sense</strong></td>
-                        <td>Richard Squiers</td>
+                        <td>Richard Squiers & Greg Anderson</td>
+                        <td><a href="mailto:richard_squiers@roundrockisd.org">richard_squiers@roundrockisd.org</a></td>
                         <td>Room C158</td>
                         <td>Mondays & Fridays</td>
                         <td>7:30 - 8:30 AM</td>
@@ -851,13 +947,15 @@
                     <tr>
                         <td><strong>Calculator Applications</strong></td>
                         <td>Kim Fulton</td>
+                        <td><a href="mailto:kimberly_fulton@roundrockisd.org">kimberly_fulton@roundrockisd.org</a></td>
                         <td>Room C286</td>
                         <td>Wednesday</td>
                         <td>7:45 - 8:45 AM</td>
                     </tr>
                     <tr>
                         <td><strong>Mathematics</strong></td>
-                        <td>Richard Squiers</td>
+                        <td>Richard Squiers & Greg Anderson</td>
+                        <td><a href="mailto:richard_squiers@roundrockisd.org">richard_squiers@roundrockisd.org</a></td>
                         <td>Room C158</td>
                         <td>Thursday</td>
                         <td>4:30 - 5:30 PM</td>
@@ -883,7 +981,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-brand">
-                <p>Stony Point High School UIL Academics</p>
+                <p>Stony Point High School UIL STEM Academics</p>
                 <span style="color: #86868B;">1800 Tiger Trail, Round Rock, TX 78664</span>
             </div>
             <div>
@@ -891,7 +989,7 @@
             </div>
         </div>
         <div class="footer-copy">
-            Stony Point High School UIL Academics Program
+            Stony Point High School UIL STEM Academics Program
         </div>
     </footer>
 
@@ -923,6 +1021,16 @@
                 const keys = Object.keys(data).reverse();
                 keys.forEach((key) => {
                     const ann = data[key];
+                    const likes = ann.likes || 0;
+                    
+                    let repliesHtml = '';
+                    if (ann.replies) {
+                        Object.keys(ann.replies).forEach(rKey => {
+                            const reply = ann.replies[rKey];
+                            repliesHtml += `<div class="reply-item">${escapeHtml(reply.text)}</div>`;
+                        });
+                    }
+
                     const card = document.createElement('div');
                     card.className = 'announcement-card';
                     card.innerHTML = `
@@ -930,6 +1038,18 @@
                         <h4>${escapeHtml(ann.title)}</h4>
                         <div class="ann-meta">Posted on ${ann.date}</div>
                         <p>${escapeHtml(ann.body)}</p>
+                        
+                        <div class="ann-actions">
+                            <button class="btn-action" onclick="likeAnnouncement('${key}')">👍 ${likes}</button>
+                            <button class="btn-action" onclick="toggleReplyBox('${key}')">💬 Reply</button>
+                        </div>
+
+                        <div class="reply-input-box" id="reply-box-${key}">
+                            <input type="text" id="reply-input-${key}" placeholder="Write a reply...">
+                            <button class="btn-action" onclick="sendReply('${key}')">Send</button>
+                        </div>
+
+                        ${repliesHtml ? `<div class="replies-container">${repliesHtml}</div>` : ''}
                     `;
                     list.appendChild(card);
                 });
@@ -952,10 +1072,35 @@
             annRef.push({
                 title: title,
                 body: body,
-                date: today
+                date: today,
+                likes: 0
             });
 
             closeModal();
+        }
+
+        function likeAnnouncement(id) {
+            db.ref('announcements/' + id + '/likes').transaction((likes) => {
+                return (likes || 0) + 1;
+            });
+        }
+
+        function toggleReplyBox(id) {
+            const box = document.getElementById('reply-box-' + id);
+            box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function sendReply(id) {
+            const input = document.getElementById('reply-input-' + id);
+            const text = input.value.trim();
+            if (!text) return;
+
+            db.ref('announcements/' + id + '/replies').push({
+                text: text,
+                date: new Date().toLocaleDateString()
+            });
+
+            input.value = '';
         }
 
         function deleteAnnouncement(id) {
