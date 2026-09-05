@@ -1120,16 +1120,22 @@
         }
 
         function likeAnnouncement(id) {
-            if (localStorage.getItem('liked_' + id)) {
-                alert('You have already liked this announcement!');
-                return;
+            const storageKey = 'liked_' + id;
+            const hasLiked = localStorage.getItem(storageKey);
+
+            if (hasLiked) {
+                // Toggle OFF: Unlike the announcement
+                db.ref('announcements/' + id + '/likes').transaction((likes) => {
+                    return (likes || 0) > 0 ? likes - 1 : 0;
+                });
+                localStorage.removeItem(storageKey);
+            } else {
+                // Toggle ON: Like the announcement
+                db.ref('announcements/' + id + '/likes').transaction((likes) => {
+                    return (likes || 0) + 1;
+                });
+                localStorage.setItem(storageKey, 'true');
             }
-
-            db.ref('announcements/' + id + '/likes').transaction((likes) => {
-                return (likes || 0) + 1;
-            });
-
-            localStorage.setItem('liked_' + id, 'true');
         }
 
         function toggleReplyBox(id) {
