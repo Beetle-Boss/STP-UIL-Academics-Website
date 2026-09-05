@@ -330,8 +330,7 @@
         }
 
         .btn-action.liked {
-            background-color: #D1E3FF;
-            color: #0B1D3A;
+            color: var(--sphs-navy);
         }
 
         .replies-container {
@@ -1124,13 +1123,11 @@
             const hasLiked = localStorage.getItem(storageKey);
 
             if (hasLiked) {
-                // Toggle OFF: Unlike the announcement
                 db.ref('announcements/' + id + '/likes').transaction((likes) => {
                     return (likes || 0) > 0 ? likes - 1 : 0;
                 });
                 localStorage.removeItem(storageKey);
             } else {
-                // Toggle ON: Like the announcement
                 db.ref('announcements/' + id + '/likes').transaction((likes) => {
                     return (likes || 0) + 1;
                 });
