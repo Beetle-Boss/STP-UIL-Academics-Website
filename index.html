@@ -73,30 +73,32 @@
             border-bottom: 1px solid var(--apple-border);
         }
 
+        /* Expanded nav-container to span far left to far right */
         .nav-container {
-            max-width: 1080px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 24px;
+            padding: 10px 32px;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
         }
 
         .header-logo-tiger {
-            height: 38px;
+            height: 40px;
             width: auto;
             object-fit: contain;
         }
 
         .header-logo-uil {
-            height: 34px;
+            height: 36px;
             width: auto;
             object-fit: contain;
             margin-left: 12px;
@@ -714,6 +716,7 @@
             .specs-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .nav-container { padding: 10px 16px; }
         }
     </style>
 </head>
@@ -726,7 +729,9 @@
     <header id="main-header">
         <div class="nav-container">
             <a href="#" class="brand">
-                <img src="tiger-logo.png" alt="Stony Point Tiger Logo" class="header-logo-tiger">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAC8CAYAAABm62L6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAedEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlx
+                sU8AAACpSURBVHhe7cExAQAAAMKg9U9tCy8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC4A/6AAAFO3S2YAAAAAElFTkSuQmCC" alt="Stony Point Tiger Logo" class="header-logo-tiger" id="tiger-logo-img">
                 <span class="brand-badge">STP</span>
                 <span class="brand-text">Stony Point UIL STEM Academics</span>
             </a>
@@ -739,7 +744,9 @@
                     <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">Master Drive</a></li>
                     <li><a href="https://calendar.google.com/calendar/u/0?cid=YmQyZjkzNzcyOTAyOGZjZTM4NGMzZjhlN2Q3ZWYzY2NkMTlhZTJkZGU3NTZjYzZlZDA3NGE0ZDQ2NmVhZmQ4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="btn-calendar">Add Calendar</a></li>
                 </ul>
-                <img src="uil-logo.png" alt="UIL Academics Logo" class="header-logo-uil">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAEFCAYAAAC0014BAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAedEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlx
+                sU8AAACpSURBVHhe7cExAQAAAMKg9U9tCy8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC4A/6AAAFO3S2YAAAAAElFTkSuQmCC" alt="UIL Academics Logo" class="header-logo-uil" id="uil-logo-img">
             </div>
         </div>
     </header>
@@ -997,6 +1004,22 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
     <script>
+        // Load full quality images directly if base64 placeholder renders
+        // Fallback image source assignment
+        document.addEventListener("DOMContentLoaded", () => {
+            const tigerImg = document.getElementById("tiger-logo-img");
+            const uilImg = document.getElementById("uil-logo-img");
+            
+            // Try loading local files first, keep base64 fallback if missing
+            const tempTiger = new Image();
+            tempTiger.src = "image_6d3e8b.png";
+            tempTiger.onload = () => { tigerImg.src = "image_6d3e8b.png"; };
+
+            const tempUil = new Image();
+            tempUil.src = "image_6d3f03.png";
+            tempUil.onload = () => { uilImg.src = "image_6d3f03.png"; };
+        });
+
         const firebaseConfig = {
             apiKey: "AIzaSyD9VltyCeRUhg-bm2WstPmyi3SjZKZuX7g",
             authDomain: "stp-uil-academics-website.firebaseapp.com",
