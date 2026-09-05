@@ -39,7 +39,7 @@
             letter-spacing: -0.022em;
         }
 
-        /* Announcement Bar */
+        /* Announcement Bar Top */
         .announcement-bar {
             background-color: #071327;
             color: #F5F5F7;
@@ -56,7 +56,7 @@
             font-weight: 600;
         }
 
-        /* Header Navigation - Dynamic Scroll */
+        /* Header Navigation */
         header {
             position: fixed;
             top: 0;
@@ -121,7 +121,7 @@
 
         .nav-links {
             display: flex;
-            gap: 28px;
+            gap: 24px;
             list-style: none;
             align-items: center;
         }
@@ -163,10 +163,6 @@
         header.scrolled .btn-calendar {
             background-color: var(--sphs-navy);
             color: #FFFFFF !important;
-        }
-
-        .btn-calendar:hover {
-            opacity: 0.9 !important;
         }
 
         /* Hero Section */
@@ -218,7 +214,10 @@
         }
 
         .section-header {
-            margin-bottom: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
         }
 
         .section-header h2 {
@@ -234,7 +233,74 @@
             margin-top: 4px;
         }
 
-        /* Tab Layout */
+        /* Announcements Section */
+        .announcements-container {
+            background-color: var(--apple-card);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            border: 1px solid var(--apple-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            margin-bottom: 48px;
+        }
+
+        .btn-add-announcement {
+            background-color: var(--sphs-gold);
+            color: var(--sphs-navy);
+            border: none;
+            padding: 9px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-add-announcement:hover {
+            background-color: var(--sphs-gold-hover);
+        }
+
+        .empty-announcements {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--apple-text-secondary);
+            font-size: 1rem;
+            background-color: #FAFAFC;
+            border-radius: var(--radius-lg);
+            border: 1px dashed var(--apple-border);
+        }
+
+        .announcement-card {
+            background-color: #FAFAFC;
+            border: 1px solid var(--apple-border);
+            border-left: 4px solid var(--sphs-gold);
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 16px;
+        }
+
+        .announcement-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .announcement-card h4 {
+            font-size: 1.1rem;
+            color: var(--sphs-navy);
+            margin-bottom: 6px;
+        }
+
+        .announcement-card .ann-meta {
+            font-size: 0.78rem;
+            color: var(--apple-text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .announcement-card p {
+            font-size: 0.92rem;
+            color: var(--apple-text-primary);
+            line-height: 1.5;
+        }
+
+        /* Tab Layout for Disciplines */
         .tabs-wrapper {
             background-color: var(--apple-card);
             border-radius: var(--radius-xl);
@@ -250,19 +316,22 @@
             border-bottom: 1px solid var(--apple-border);
             padding: 6px;
             gap: 6px;
+            overflow-x: auto;
         }
 
         .tab-btn {
             flex: 1;
-            padding: 12px 20px;
+            min-width: 130px;
+            padding: 12px 16px;
             background: none;
             border: none;
             border-radius: var(--radius-lg);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 500;
             color: var(--apple-text-secondary);
             cursor: pointer;
             transition: var(--transition-smooth);
+            white-space: nowrap;
         }
 
         .tab-btn:hover {
@@ -285,7 +354,6 @@
             display: block;
         }
 
-        /* Content Grid */
         .event-grid {
             display: grid;
             grid-template-columns: 1.8fr 1.2fr;
@@ -337,7 +405,7 @@
             color: var(--sphs-navy);
         }
 
-        /* Practice & Resources */
+        /* Practice Sidebar */
         .resource-sidebar {
             background-color: #FAFAFC;
             border: 1px solid var(--apple-border);
@@ -393,38 +461,13 @@
             margin-bottom: 48px;
         }
 
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .btn-action {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--sphs-navy);
-            color: #FFFFFF;
-            padding: 9px 18px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.85rem;
-            transition: var(--transition-smooth);
-        }
-
-        .btn-action:hover {
-            background-color: var(--sphs-navy-surface);
-        }
-
         .calendar-embed-container {
             width: 100%;
             height: 560px;
             border-radius: var(--radius-lg);
             overflow: hidden;
             border: 1px solid var(--apple-border);
+            margin-top: 20px;
         }
 
         .calendar-embed-container iframe {
@@ -470,9 +513,9 @@
         }
 
         .tag {
-            padding: 3px 10px;
+            padding: 4px 10px;
             border-radius: 12px;
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             font-weight: 600;
             display: inline-block;
         }
@@ -480,6 +523,76 @@
         .tag-ns { background: #EBF5FF; color: #0066CC; }
         .tag-math { background: #FEF6E6; color: #9A7200; }
         .tag-calc { background: #F2F4F7; color: #344054; }
+        .tag-sci { background: #E6F4EA; color: #137333; }
+        .tag-humanities { background: #FCE8E6; color: #C5221F; }
+
+        /* Modal Popup */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-card {
+            background: var(--apple-card);
+            padding: 32px;
+            border-radius: var(--radius-xl);
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .modal-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            color: var(--sphs-navy);
+        }
+
+        .modal-card input, .modal-card textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 14px;
+            border: 1px solid var(--apple-border);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+
+        .modal-card textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .btn-cancel {
+            background: #E5E5EA;
+            color: var(--apple-text-primary);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            background: var(--sphs-navy);
+            color: #FFFFFF;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 16px;
+            cursor: pointer;
+        }
 
         /* Footer */
         footer {
@@ -518,13 +631,14 @@
             .event-grid { grid-template-columns: 1fr; }
             .specs-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
         }
     </style>
 </head>
 <body>
 
     <div class="announcement-bar">
-        Weekly Practices: <span>Mon & Fri</span> (Number Sense) | <span>Wed</span> (Calc Apps) | <span>Thu</span> (Math)
+        Weekly Practice Schedule: <span>Mon & Fri</span> (Number Sense) | <span>Wed</span> (Calc, Sci, Debate, Writing, Acct) | <span>Thu</span> (Math)
     </div>
 
     <header id="main-header">
@@ -534,9 +648,10 @@
                 <span class="brand-text">Stony Point UIL Academics</span>
             </a>
             <ul class="nav-links">
+                <li><a href="#announcements-section">Announcements</a></li>
                 <li><a href="#events">Disciplines</a></li>
                 <li><a href="#calendar">Calendar</a></li>
-                <li><a href="#schedule">Practice Schedule</a></li>
+                <li><a href="#schedule">Schedule & Rooms</a></li>
                 <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">Master Drive</a></li>
                 <li><a href="https://calendar.google.com/calendar/u/0?cid=YmQyZjkzNzcyOTAyOGZjZTM4NGMzZjhlN2Q3ZWYzY2NkMTlhZTJkZGU3NTZjYzZlZDA3NGE0ZDQ2NmVhZmQ4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="btn-calendar">Add Calendar</a></li>
             </ul>
@@ -547,23 +662,45 @@
         <div class="hero-container">
             <p class="hero-eyebrow">Stony Point High School</p>
             <h1 class="hero-title">UIL Academics</h1>
-            <p class="hero-subtitle">Welcome to the Stony Point High School UIL Academics Website</p>
+            <p class="hero-subtitle">Official hub for practice schedules, team coaches, room locations, and competition resources.</p>
         </div>
     </section>
 
     <main class="main-container">
 
+        <section id="announcements-section">
+            <div class="section-header">
+                <div>
+                    <h2>Announcements</h2>
+                    <p>Latest updates and reminders for UIL Academic team members.</p>
+                </div>
+                <button class="btn-add-announcement" onclick="openModal()">+ Add Announcement</button>
+            </div>
+
+            <div class="announcements-container">
+                <div id="announcements-list">
+                    <div class="empty-announcements" id="empty-msg">
+                        No current announcements.
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="events">
             <div class="section-header">
-                <h2>STEM Disciplines</h2>
-                <p>Select a category to view contest formats, resources, and practice links.</p>
+                <div>
+                    <h2>UIL Disciplines & Coaches</h2>
+                    <p>Select a category to view meeting times, room numbers, and team details.</p>
+                </div>
             </div>
 
             <div class="tabs-wrapper">
                 <div class="tab-buttons">
                     <button class="tab-btn active" onclick="openTab(event, 'numbersense-tab')">Number Sense</button>
                     <button class="tab-btn" onclick="openTab(event, 'math-tab')">Mathematics</button>
-                    <button class="tab-btn" onclick="openTab(event, 'calculator-tab')">Calculator Applications</button>
+                    <button class="tab-btn" onclick="openTab(event, 'calculator-tab')">Calculator Apps</button>
+                    <button class="tab-btn" onclick="openTab(event, 'science-tab')">Science</button>
+                    <button class="tab-btn" onclick="openTab(event, 'humanities-tab')">Writing & Debate</button>
                 </div>
 
                 <div id="numbersense-tab" class="tab-content active">
@@ -574,20 +711,20 @@
 
                             <div class="specs-grid">
                                 <div class="spec-item">
-                                    <label>Time Limit</label>
-                                    <span>10 Minutes</span>
+                                    <label>Coach</label>
+                                    <span>Richard Squiers</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Meeting Location</label>
+                                    <span>Room C158</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Meeting Times</label>
+                                    <span>Mon & Fri (7:30 - 8:30 AM)</span>
                                 </div>
                                 <div class="spec-item">
                                     <label>Format</label>
-                                    <span>80 Direct Problems</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Scoring</label>
-                                    <span>+5 Correct, -4 Incorrect</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Practice Sessions</label>
-                                    <span>Mon & Fri (Before School)</span>
+                                    <span>10 Min / 80 Questions</span>
                                 </div>
                             </div>
                         </div>
@@ -596,11 +733,10 @@
                             <h4>Practice Links & Resources</h4>
                             <ul class="resource-list">
                                 <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">STP UIL Master Drive</a></li>
-                                <li><a href="https://drive.google.com/drive/u/1/folders/1H1SA569izLxskD3cdIcoxKg5GN8fz_Ci" target="_blank">STP UIL Number Sense Drive</a></li>
-                                <li><a href="https://project-sense.vercel.app/login" target="_blank">Project Sense</a></li>
-                                <li><a href="https://arithmetic.zetamac.com/" target="_blank">Zetamac Arithmetic</a></li>
-                                <li><a href="https://monkeysense.me/" target="_blank">Monkeysense</a></li>
-                                <li><a href="https://chelonian.neocities.org/numbersense/tests?fbclid=PAVERFWATUh3JwZG9mAmV4dG4DYWVtAjEwAHNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABpw8cX_hDOYMC2VzVGfROd1b64IDW-aCj7G8lGcYBCsqrGTQ6i14aUXFCCJq7_aem_sbKVHJi84xXKDz3-vja3cw" target="_blank">Test Archive</a></li>
+                                <li><a href="https://drive.google.com/drive/u/1/folders/1H1SA569izLxskD3cdIcoxKg5GN8fz_Ci" target="_blank">Number Sense Drive Folder</a></li>
+                                <li><a href="https://project-sense.vercel.app/login" target="_blank">Project Sense Portal</a></li>
+                                <li><a href="https://arithmetic.zetamac.com/" target="_blank">Zetamac Speed Trainer</a></li>
+                                <li><a href="https://monkeysense.me/" target="_blank">Monkeysense Practice</a></li>
                             </ul>
                         </div>
                     </div>
@@ -614,20 +750,20 @@
 
                             <div class="specs-grid">
                                 <div class="spec-item">
-                                    <label>Time Limit</label>
-                                    <span>40 Minutes</span>
+                                    <label>Coach</label>
+                                    <span>Richard Squiers</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Meeting Location</label>
+                                    <span>Room C158</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Meeting Times</label>
+                                    <span>Thursday (4:30 - 5:30 PM)</span>
                                 </div>
                                 <div class="spec-item">
                                     <label>Format</label>
-                                    <span>60 Multiple Choice</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Scoring</label>
-                                    <span>+6 Correct, -2 Incorrect</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Practice Sessions</label>
-                                    <span>Thursday (After School)</span>
+                                    <span>40 Min / 60 MC Questions</span>
                                 </div>
                             </div>
                         </div>
@@ -650,20 +786,20 @@
 
                             <div class="specs-grid">
                                 <div class="spec-item">
-                                    <label>Time Limit</label>
-                                    <span>30 Minutes</span>
+                                    <label>Coach</label>
+                                    <span>Kim Fulton</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Meeting Location</label>
+                                    <span>Room C286</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Meeting Times</label>
+                                    <span>Wednesday (7:45 - 8:45 AM)</span>
                                 </div>
                                 <div class="spec-item">
                                     <label>Format</label>
-                                    <span>70 Questions</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Scoring</label>
-                                    <span>+5 Correct, -2 Incorrect</span>
-                                </div>
-                                <div class="spec-item">
-                                    <label>Practice Sessions</label>
-                                    <span>Wednesday (Before School)</span>
+                                    <span>30 Min / 70 Questions</span>
                                 </div>
                             </div>
                         </div>
@@ -678,16 +814,88 @@
                     </div>
                 </div>
 
+                <div id="science-tab" class="tab-content">
+                    <div class="event-grid">
+                        <div class="event-main">
+                            <h3>Science</h3>
+                            <p class="event-description">Challenges students in biology, chemistry, and physics with advanced concepts and problem-solving scenarios.</p>
+
+                            <div class="specs-grid">
+                                <div class="spec-item">
+                                    <label>Coach</label>
+                                    <span>Esther Jeong</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Meeting Location</label>
+                                    <span>Room B258</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Meeting Times</label>
+                                    <span>Wednesday (4:30 - 5:30 PM)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Format</label>
+                                    <span>2 Hours / 60 MC Questions</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resource-sidebar">
+                            <h4>Resources</h4>
+                            <ul class="resource-list">
+                                <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">STP UIL Master Drive</a></li>
+                                <li><a href="https://www.uiltexas.org/academics/stem/science" target="_blank">UIL Official Science Page</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="humanities-tab" class="tab-content">
+                    <div class="event-grid">
+                        <div class="event-main">
+                            <h3>Writing, Debate & Journalism</h3>
+                            <p class="event-description">Covers UIL events including Ready Writing, Spelling & Vocabulary, Journalism, and Speech & Debate.</p>
+
+                            <div class="specs-grid">
+                                <div class="spec-item">
+                                    <label>Debate Coach</label>
+                                    <span>Veronica Estrada (B104)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Writing Coach</label>
+                                    <span>Sara Wyatt (C165)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Journalism Coach</label>
+                                    <span>Zoe Riemer (A209)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>One Act Play</label>
+                                    <span>Sunshine Parsons (F125)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resource-sidebar">
+                            <h4>Resources</h4>
+                            <ul class="resource-list">
+                                <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">STP UIL Master Drive</a></li>
+                                <li><a href="https://www.uiltexas.org/academics" target="_blank">UIL Academics Main Site</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <section id="calendar" class="calendar-section">
-            <div class="calendar-header">
+            <div class="section-header">
                 <div>
                     <h2>Academic Calendar</h2>
-                    <p class="section-header p">Practice schedule and competition dates.</p>
+                    <p>Upcoming practice sessions and contest dates.</p>
                 </div>
-                <a href="https://calendar.google.com/calendar/u/0?cid=YmQyZjkzNzcyOTAyOGZjZTM4NGMzZjhlN2Q3ZWYzY2NkMTlhZTJkZGU3NTZjYzZlZDA3NGE0ZDQ2NmVhZmQ4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="btn-action">
+                <a href="https://calendar.google.com/calendar/u/0?cid=YmQyZjkzNzcyOTAyOGZjZTM4NGMzZjhlN2Q3ZWYzY2NkMTlhZTJkZGU3NTZjYzZlZDA3NGE0ZDQ2NmVhZmQ4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="btn-add-announcement" style="text-decoration:none;">
                     Add to Personal Calendar
                 </a>
             </div>
@@ -699,48 +907,123 @@
 
         <section id="schedule" class="schedule-section">
             <div class="section-header">
-                <h2>Weekly Practice Schedule</h2>
-                <p>Regular team practice sessions held in Room 214.</p>
+                <div>
+                    <h2>Weekly Practice & Room Schedule</h2>
+                    <p>Updated team meeting times and room locations across all subjects.</p>
+                </div>
             </div>
             <table class="schedule-table">
                 <thead>
                     <tr>
-                        <th>Day</th>
-                        <th>Time</th>
-                        <th>Event</th>
-                        <th>Location</th>
+                        <th>Subject / Event</th>
+                        <th>Coach</th>
+                        <th>Meeting Location</th>
+                        <th>Meeting Day</th>
+                        <th>Meeting Time</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Monday</strong></td>
-                        <td>Before School</td>
-                        <td><span class="tag tag-ns">Number Sense</span></td>
-                        <td>Room 214</td>
+                        <td><strong>Number Sense</strong></td>
+                        <td>Richard Squiers</td>
+                        <td>Room C158</td>
+                        <td>Mondays & Fridays</td>
+                        <td>7:30 - 8:30 AM</td>
                     </tr>
                     <tr>
-                        <td><strong>Wednesday</strong></td>
-                        <td>Before School</td>
-                        <td><span class="tag tag-calc">Calculator Applications</span></td>
-                        <td>Room 214</td>
+                        <td><strong>Calculator Applications</strong></td>
+                        <td>Kim Fulton</td>
+                        <td>Room C286</td>
+                        <td>Wednesday</td>
+                        <td>7:45 - 8:45 AM</td>
                     </tr>
                     <tr>
-                        <td><strong>Thursday</strong></td>
-                        <td>After School</td>
-                        <td><span class="tag tag-math">Mathematics</span></td>
-                        <td>Room 214</td>
+                        <td><strong>Ready Writing</strong></td>
+                        <td>Sara Wyatt</td>
+                        <td>Room C165</td>
+                        <td>Wednesday</td>
+                        <td>7:45 - 8:45 AM</td>
                     </tr>
                     <tr>
-                        <td><strong>Friday</strong></td>
-                        <td>Before School</td>
-                        <td><span class="tag tag-ns">Number Sense</span></td>
-                        <td>Room 214</td>
+                        <td><strong>Vocab & Spelling</strong></td>
+                        <td>Sara Wyatt</td>
+                        <td>Room C165</td>
+                        <td>Wednesday</td>
+                        <td>7:45 - 8:45 AM</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Journalism</strong></td>
+                        <td>Zoe Riemer</td>
+                        <td>Room A209</td>
+                        <td>Wednesday</td>
+                        <td>8:00 - 8:50 AM</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Accounting</strong></td>
+                        <td>Jeanne Hammond</td>
+                        <td>Room D101</td>
+                        <td>Wednesday</td>
+                        <td>4:30 - 5:30 PM</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Science</strong></td>
+                        <td>Esther Jeong</td>
+                        <td>Room B258</td>
+                        <td>Wednesday</td>
+                        <td>4:30 - 5:30 PM</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Debate</strong></td>
+                        <td>Veronica Estrada</td>
+                        <td>Room B104</td>
+                        <td>Wednesday</td>
+                        <td>4:30 - 5:30 PM</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mathematics</strong></td>
+                        <td>Richard Squiers</td>
+                        <td>Room C158</td>
+                        <td>Thursday</td>
+                        <td>4:30 - 5:30 PM</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Computer Science</strong></td>
+                        <td>David Encinia</td>
+                        <td>Room C284</td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Social Studies</strong></td>
+                        <td>Noel Breger</td>
+                        <td>Room C221</td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                    </tr>
+                    <tr>
+                        <td><strong>One Act Play</strong></td>
+                        <td>Sunshine Parsons</td>
+                        <td>Room F125</td>
+                        <td>TBD</td>
+                        <td>TBD</td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
     </main>
+
+    <div class="modal-overlay" id="announcement-modal">
+        <div class="modal-card">
+            <h3>Add Announcement</h3>
+            <input type="text" id="modal-title" placeholder="Announcement Title">
+            <textarea id="modal-body" placeholder="Write announcement details..."></textarea>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                <button class="btn-submit" onclick="submitAnnouncement()">Post</button>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-container">
@@ -758,7 +1041,7 @@
     </footer>
 
     <script>
-        // Tab switching logic
+        // Tab Switching Logic
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             
@@ -776,7 +1059,7 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // Dynamic Header Styling on Scroll
+        // Header Scroll Effect
         const header = document.getElementById('main-header');
         const heroSection = document.getElementById('hero-section');
 
@@ -788,6 +1071,46 @@
                 header.classList.remove('scrolled');
             }
         });
+
+        // Announcement Modal Functions
+        function openModal() {
+            document.getElementById('announcement-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('announcement-modal').style.display = 'none';
+            document.getElementById('modal-title').value = '';
+            document.getElementById('modal-body').value = '';
+        }
+
+        function submitAnnouncement() {
+            const title = document.getElementById('modal-title').value.trim();
+            const body = document.getElementById('modal-body').value.trim();
+
+            if (!title || !body) {
+                alert('Please fill out both the title and details.');
+                return;
+            }
+
+            const emptyMsg = document.getElementById('empty-msg');
+            if (emptyMsg) {
+                emptyMsg.style.display = 'none';
+            }
+
+            const list = document.getElementById('announcements-list');
+            const today = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+            const card = document.createElement('div');
+            card.className = 'announcement-card';
+            card.innerHTML = `
+                <h4>${title}</h4>
+                <div class="ann-meta">Posted on ${today}</div>
+                <p>${body}</p>
+            `;
+
+            list.prepend(card);
+            closeModal();
+        }
     </script>
 </body>
 </html>
