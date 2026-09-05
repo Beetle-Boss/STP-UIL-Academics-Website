@@ -89,19 +89,6 @@
             text-decoration: none;
         }
 
-        .header-logo-tiger {
-            height: 38px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .header-logo-uil {
-            height: 34px;
-            width: auto;
-            object-fit: contain;
-            margin-left: 12px;
-        }
-
         .brand-badge {
             background-color: var(--sphs-gold);
             color: var(--sphs-navy);
@@ -342,6 +329,11 @@
             background-color: #E5E5EA;
         }
 
+        .btn-action.liked {
+            background-color: #D1E3FF;
+            color: #0B1D3A;
+        }
+
         .replies-container {
             margin-top: 12px;
             padding-left: 16px;
@@ -355,16 +347,54 @@
             font-size: 0.85rem;
             margin-bottom: 6px;
             border: 1px solid var(--apple-border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .reply-text-wrapper {
+            line-height: 1.4;
+        }
+
+        .reply-author {
+            font-weight: 600;
+            color: var(--sphs-navy);
+            margin-right: 6px;
+        }
+
+        .btn-delete-reply {
+            background: none;
+            border: none;
+            color: var(--apple-text-secondary);
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 6px;
+            margin-left: 12px;
+        }
+
+        .btn-delete-reply:hover {
+            color: #C5221F;
         }
 
         .reply-input-box {
             display: none;
             margin-top: 10px;
             gap: 8px;
+            flex-wrap: wrap;
         }
 
-        .reply-input-box input {
+        .reply-input-box .input-name {
+            width: 140px;
+            padding: 6px 12px;
+            border: 1px solid var(--apple-border);
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        .reply-input-box .input-msg {
             flex: 1;
+            min-width: 200px;
             padding: 6px 12px;
             border: 1px solid var(--apple-border);
             border-radius: 12px;
@@ -1020,12 +1050,21 @@
                 keys.forEach((key) => {
                     const ann = data[key];
                     const likes = ann.likes || 0;
+                    const hasLiked = localStorage.getItem('liked_' + key);
                     
                     let repliesHtml = '';
                     if (ann.replies) {
                         Object.keys(ann.replies).forEach(rKey => {
                             const reply = ann.replies[rKey];
-                            repliesHtml += `<div class="reply-item">${escapeHtml(reply.text)}</div>`;
+                            const authorName = reply.author ? escapeHtml(reply.author) : 'Anonymous';
+                            repliesHtml += `
+                                <div class="reply-item">
+                                    <div class="reply-text-wrapper">
+                                        <span class="reply-author">${authorName}:</span>
+                                        <span>${escapeHtml(reply.text)}</span>
+                                    </div>
+                                    <button class="btn-delete-reply" onclick="deleteReply('${key}', '${rKey}')">Delete</button>
+                                </div>`;
                         });
                     }
 
@@ -1038,12 +1077,15 @@
                         <p>${escapeHtml(ann.body)}</p>
                         
                         <div class="ann-actions">
-                            <button class="btn-action" onclick="likeAnnouncement('${key}')">👍 ${likes}</button>
+                            <button class="btn-action ${hasLiked ? 'liked' : ''}" onclick="likeAnnouncement('${key}')">
+                                ${hasLiked ? '👍 Liked' : '👍'} ${likes}
+                            </button>
                             <button class="btn-action" onclick="toggleReplyBox('${key}')">💬 Reply</button>
                         </div>
 
                         <div class="reply-input-box" id="reply-box-${key}">
-                            <input type="text" id="reply-input-${key}" placeholder="Write a reply...">
+                            <input type="text" id="reply-name-${key}" class="input-name" placeholder="Your Name">
+                            <input type="text" id="reply-input-${key}" class="input-msg" placeholder="Write a reply...">
                             <button class="btn-action" onclick="sendReply('${key}')">Send</button>
                         </div>
 
@@ -1078,9 +1120,16 @@
         }
 
         function likeAnnouncement(id) {
+            if (localStorage.getItem('liked_' + id)) {
+                alert('You have already liked this announcement!');
+                return;
+            }
+
             db.ref('announcements/' + id + '/likes').transaction((likes) => {
                 return (likes || 0) + 1;
             });
+
+            localStorage.setItem('liked_' + id, 'true');
         }
 
         function toggleReplyBox(id) {
@@ -1089,16 +1138,32 @@
         }
 
         function sendReply(id) {
-            const input = document.getElementById('reply-input-' + id);
-            const text = input.value.trim();
-            if (!text) return;
+            const nameInput = document.getElementById('reply-name-' + id);
+            const textInput = document.getElementById('reply-input-' + id);
+            const name = nameInput.value.trim();
+            const text = textInput.value.trim();
+
+            if (!name) {
+                alert('Please enter your name before replying.');
+                return;
+            }
+
+            if (!text) {
+                alert('Please enter a reply message.');
+                return;
+            }
 
             db.ref('announcements/' + id + '/replies').push({
+                author: name,
                 text: text,
                 date: new Date().toLocaleDateString()
             });
 
-            input.value = '';
+            textInput.value = '';
+        }
+
+        function deleteReply(annId, replyId) {
+            db.ref('announcements/' + annId + '/replies/' + replyId).remove();
         }
 
         function deleteAnnouncement(id) {
