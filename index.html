@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stony Point High School | UIL Academics</title>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sphs-navy: #0B1D3A;
+            --sphs-navy-surface: #132A4F;
+            --sphs-gold: #C99700;
+            --sphs-gold-hover: #B08400;
+            --apple-bg: #F5F5F7;
+            --apple-card: #FFFFFF;
+            --apple-text-primary: #1D1D1F;
+            --apple-text-secondary: #86868B;
+            --apple-border: rgba(0, 0, 0, 0.08);
+            --apple-border-subtle: rgba(0, 0, 0, 0.04);
+            --radius-xl: 20px;
+            --radius-lg: 14px;
+            --radius-sm: 8px;
+            --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--apple-bg);
+            color: var(--apple-text-primary);
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+        }
+
+        /* Announcement Bar */
+        .announcement-bar {
+            background-color: #071327;
+            color: #F5F5F7;
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .announcement-bar span {
+            color: var(--sphs-gold);
+            font-weight: 600;
+        }
+
+        /* Header Navigation - Dynamic Scroll */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+            background-color: var(--sphs-navy);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--apple-border);
+        }
+
+        .nav-container {
+            max-width: 1020px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-badge {
+            background-color: var(--sphs-gold);
+            color: var(--sphs-navy);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.05em;
+            transition: var(--transition-smooth);
+        }
+
+        header.scrolled .brand-badge {
+            background-color: var(--sphs-navy);
+            color: var(--sphs-gold);
+        }
+
+        .brand-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            letter-spacing: -0.015em;
+            transition: var(--transition-smooth);
+        }
+
+        header.scrolled .brand-text {
+            color: var(--apple-text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: var(--transition-smooth);
+            opacity: 0.9;
+        }
+
+        header.scrolled .nav-links a {
+            color: var(--apple-text-primary);
+            opacity: 0.8;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--sphs-gold);
+        }
+
+        header.scrolled .nav-links a:hover {
+            color: var(--sphs-navy);
+        }
+
+        .btn-calendar {
+            background-color: var(--sphs-gold);
+            color: var(--sphs-navy) !important;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            opacity: 1 !important;
+            transition: var(--transition-smooth);
+        }
+
+        header.scrolled .btn-calendar {
+            background-color: var(--sphs-navy);
+            color: #FFFFFF !important;
+        }
+
+        .btn-calendar:hover {
+            opacity: 0.9 !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--sphs-navy);
+            color: #FFFFFF;
+            padding: 140px 24px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--sphs-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            line-height: 1.08349;
+            font-weight: 700;
+            letter-spacing: -0.003em;
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.35rem;
+            line-height: 1.381;
+            font-weight: 400;
+            color: #98A2B3;
+            max-width: 620px;
+            margin: 0 auto;
+            letter-spacing: -0.011em;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1020px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+
+        .section-header {
+            margin-bottom: 28px;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.021em;
+            color: var(--apple-text-primary);
+        }
+
+        .section-header p {
+            color: var(--apple-text-secondary);
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+
+        /* Tab Layout */
+        .tabs-wrapper {
+            background-color: var(--apple-card);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--apple-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            margin-bottom: 48px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            background-color: #FAFAFC;
+            border-bottom: 1px solid var(--apple-border);
+            padding: 6px;
+            gap: 6px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--apple-text-secondary);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .tab-btn:hover {
+            color: var(--apple-text-primary);
+        }
+
+        .tab-btn.active {
+            background-color: var(--apple-card);
+            color: var(--sphs-navy);
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 40px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Content Grid */
+        .event-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1.2fr;
+            gap: 40px;
+        }
+
+        .event-main h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--sphs-navy);
+            margin-bottom: 12px;
+            letter-spacing: -0.015em;
+        }
+
+        .event-description {
+            color: var(--apple-text-primary);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+            line-height: 1.55;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .spec-item {
+            background-color: #FAFAFC;
+            border: 1px solid var(--apple-border-subtle);
+            padding: 14px 16px;
+            border-radius: var(--radius-lg);
+        }
+
+        .spec-item label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--apple-text-secondary);
+            letter-spacing: 0.03em;
+            margin-bottom: 4px;
+        }
+
+        .spec-item span {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--sphs-navy);
+        }
+
+        /* Practice & Resources */
+        .resource-sidebar {
+            background-color: #FAFAFC;
+            border: 1px solid var(--apple-border);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            height: fit-content;
+        }
+
+        .resource-sidebar h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--sphs-navy);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .resource-list {
+            list-style: none;
+        }
+
+        .resource-list li {
+            margin-bottom: 10px;
+        }
+
+        .resource-list a {
+            color: var(--sphs-navy);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background-color: var(--apple-card);
+            border: 1px solid var(--apple-border);
+            border-radius: var(--radius-sm);
+            transition: var(--transition-smooth);
+        }
+
+        .resource-list a:hover {
+            border-color: var(--sphs-gold);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            background-color: var(--apple-card);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            border: 1px solid var(--apple-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            margin-bottom: 48px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--sphs-navy);
+            color: #FFFFFF;
+            padding: 9px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-action:hover {
+            background-color: var(--sphs-navy-surface);
+        }
+
+        .calendar-embed-container {
+            width: 100%;
+            height: 560px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--apple-border);
+        }
+
+        .calendar-embed-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Schedule Section */
+        .schedule-section {
+            background-color: var(--apple-card);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            border: 1px solid var(--apple-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .schedule-table th {
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--apple-text-secondary);
+            border-bottom: 1px solid var(--apple-border);
+        }
+
+        .schedule-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--apple-border-subtle);
+            font-size: 0.9rem;
+            color: var(--apple-text-primary);
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tag {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .tag-ns { background: #EBF5FF; color: #0066CC; }
+        .tag-math { background: #FEF6E6; color: #9A7200; }
+        .tag-calc { background: #F2F4F7; color: #344054; }
+
+        /* Footer */
+        footer {
+            background-color: var(--sphs-navy);
+            color: #86868B;
+            padding: 48px 24px 32px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.82rem;
+        }
+
+        .footer-container {
+            max-width: 1020px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand p {
+            color: #FFFFFF;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .footer-copy {
+            max-width: 1020px;
+            margin: 24px auto 0;
+            text-align: center;
+        }
+
+        @media (max-width: 800px) {
+            .hero-title { font-size: 2.2rem; }
+            .event-grid { grid-template-columns: 1fr; }
+            .specs-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar">
+        Weekly Practices: <span>Mon & Fri</span> (Number Sense) | <span>Wed</span> (Calc Apps) | <span>Thu</span> (Math)
+    </div>
+
+    <header id="main-header">
+        <div class="nav-container">
+            <a href="#" class="brand">
+                <span class="brand-badge">STP</span>
+                <span class="brand-text">Stony Point UIL Academics</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#events">Disciplines</a></li>
+                <li><a href="#calendar">Calendar</a></li>
+                <li><a href="#schedule">Practice Schedule</a></li>
+                <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">Master Drive</a></li>
+                <li><a href="https://calendar.google.com/calendar/u/0?cid=YmQyZjkzNzcyOTAyOGZjZTM4NGMzZjhlN2Q3ZWYzY2NkMTlhZTJkZGU3NTZjYzZlZDA3NGE0ZDQ2NmVhZmQ4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="btn-calendar">Add Calendar</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero" id="hero-section">
+        <div class="hero-container">
+            <p class="hero-eyebrow">Stony Point High School</p>
+            <h1 class="hero-title">UIL Academics</h1>
+            <p class="hero-subtitle">Welcome to the Stony Point High School UIL Academics Website</p>
+        </div>
+    </section>
+
+    <main class="main-container">
+
+        <section id="events">
+            <div class="section-header">
+                <h2>STEM Disciplines</h2>
+                <p>Select a category to view contest formats, resources, and practice links.</p>
+            </div>
+
+            <div class="tabs-wrapper">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openTab(event, 'numbersense-tab')">Number Sense</button>
+                    <button class="tab-btn" onclick="openTab(event, 'math-tab')">Mathematics</button>
+                    <button class="tab-btn" onclick="openTab(event, 'calculator-tab')">Calculator Applications</button>
+                </div>
+
+                <div id="numbersense-tab" class="tab-content active">
+                    <div class="event-grid">
+                        <div class="event-main">
+                            <h3>Number Sense</h3>
+                            <p class="event-description">A 10-minute mental math contest designed to test speed and accuracy. Calculations are completed entirely in your head with no scratch work or calculators permitted.</p>
+
+                            <div class="specs-grid">
+                                <div class="spec-item">
+                                    <label>Time Limit</label>
+                                    <span>10 Minutes</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Format</label>
+                                    <span>80 Direct Problems</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Scoring</label>
+                                    <span>+5 Correct, -4 Incorrect</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Practice Sessions</label>
+                                    <span>Mon & Fri (Before School)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resource-sidebar">
+                            <h4>Practice Links & Resources</h4>
+                            <ul class="resource-list">
+                                <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">STP UIL Master Drive</a></li>
+                                <li><a href="https://drive.google.com/drive/u/1/folders/1H1SA569izLxskD3cdIcoxKg5GN8fz_Ci" target="_blank">STP UIL Number Sense Drive</a></li>
+                                <li><a href="https://project-sense.vercel.app/login" target="_blank">Project Sense</a></li>
+                                <li><a href="https://arithmetic.zetamac.com/" target="_blank">Zetamac Arithmetic</a></li>
+                                <li><a href="https://monkeysense.me/" target="_blank">Monkeysense</a></li>
+                                <li><a href="https://chelonian.neocities.org/numbersense/tests?fbclid=PAVERFWATUh3JwZG9mAmV4dG4DYWVtAjEwAHNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABpw8cX_hDOYMC2VzVGfROd1b64IDW-aCj7G8lGcYBCsqrGTQ6i14aUXFCCJq7_aem_sbKVHJi84xXKDz3-vja3cw" target="_blank">Test Archive</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="math-tab" class="tab-content">
+                    <div class="event-grid">
+                        <div class="event-main">
+                            <h3>Mathematics</h3>
+                            <p class="event-description">Designed to test knowledge across algebra, geometry, trigonometry, pre-calculus, and calculus. Questions range from foundational concepts to advanced problem solving.</p>
+
+                            <div class="specs-grid">
+                                <div class="spec-item">
+                                    <label>Time Limit</label>
+                                    <span>40 Minutes</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Format</label>
+                                    <span>60 Multiple Choice</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Scoring</label>
+                                    <span>+6 Correct, -2 Incorrect</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Practice Sessions</label>
+                                    <span>Thursday (After School)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resource-sidebar">
+                            <h4>Resources</h4>
+                            <ul class="resource-list">
+                                <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">STP UIL Master Drive</a></li>
+                                <li><a href="https://www.uiltexas.org/academics/stem/mathematics" target="_blank">UIL Official Math Page</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="calculator-tab" class="tab-content">
+                    <div class="event-grid">
+                        <div class="event-main">
+                            <h3>Calculator Applications</h3>
+                            <p class="event-description">Combines fast mathematical calculations with problem-solving skills across numerical calculations, geometry, and word problems.</p>
+
+                            <div class="specs-grid">
+                                <div class="spec-item">
+                                    <label>Time Limit</label>
+                                    <span>30 Minutes</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Format</label>
+                                    <span>70 Questions</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Scoring</label>
+                                    <span>+5 Correct, -2 Incorrect</span>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Practice Sessions</label>
+                                    <span>Wednesday (Before School)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resource-sidebar">
+                            <h4>Resources</h4>
+                            <ul class="resource-list">
+                                <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">STP UIL Master Drive</a></li>
+                                <li><a href="https://www.uiltexas.org/academics/stem/calculator-applications" target="_blank">UIL Official Calculator Page</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="calendar" class="calendar-section">
+            <div class="calendar-header">
+                <div>
+                    <h2>Academic Calendar</h2>
+                    <p class="section-header p">Practice schedule and competition dates.</p>
+                </div>
+                <a href="https://calendar.google.com/calendar/u/0?cid=YmQyZjkzNzcyOTAyOGZjZTM4NGMzZjhlN2Q3ZWYzY2NkMTlhZTJkZGU3NTZjYzZlZDA3NGE0ZDQ2NmVhZmQ4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="btn-action">
+                    Add to Personal Calendar
+                </a>
+            </div>
+
+            <div class="calendar-embed-container">
+                <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=1&src=YmQyZjkzNzcyOTAyOGZjZTM4NGMzZjhlN2Q3ZWYzY2NkMTlhZTJkZGU3NTZjYzZlZDA3NGE0ZDQ2NmVhZmQ4M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%230B1D3A" scrolling="no"></iframe>
+            </div>
+        </section>
+
+        <section id="schedule" class="schedule-section">
+            <div class="section-header">
+                <h2>Weekly Practice Schedule</h2>
+                <p>Regular team practice sessions held in Room 214.</p>
+            </div>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Time</th>
+                        <th>Event</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Monday</strong></td>
+                        <td>Before School</td>
+                        <td><span class="tag tag-ns">Number Sense</span></td>
+                        <td>Room 214</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wednesday</strong></td>
+                        <td>Before School</td>
+                        <td><span class="tag tag-calc">Calculator Applications</span></td>
+                        <td>Room 214</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thursday</strong></td>
+                        <td>After School</td>
+                        <td><span class="tag tag-math">Mathematics</span></td>
+                        <td>Room 214</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Friday</strong></td>
+                        <td>Before School</td>
+                        <td><span class="tag tag-ns">Number Sense</span></td>
+                        <td>Room 214</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <p>Stony Point High School UIL Academics</p>
+                <span style="color: #86868B;">1800 Tiger Trail, Round Rock, TX 78664</span>
+            </div>
+            <div>
+                <a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank" style="color: var(--sphs-gold); text-decoration: none; font-weight: 500;">Access Master Drive Folder</a>
+            </div>
+        </div>
+        <div class="footer-copy">
+            Stony Point High School UIL Academics Program
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching logic
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Dynamic Header Styling on Scroll
+        const header = document.getElementById('main-header');
+        const heroSection = document.getElementById('hero-section');
+
+        window.addEventListener('scroll', () => {
+            const heroBottom = heroSection.offsetHeight - 60;
+            if (window.scrollY > heroBottom) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
