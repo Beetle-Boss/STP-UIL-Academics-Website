@@ -276,6 +276,7 @@
             padding: 20px;
             border-radius: var(--radius-lg);
             margin-bottom: 16px;
+            position: relative;
         }
 
         .announcement-card:last-child {
@@ -298,6 +299,22 @@
             font-size: 0.92rem;
             color: var(--apple-text-primary);
             line-height: 1.5;
+        }
+
+        .btn-delete-ann {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--apple-text-secondary);
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .btn-delete-ann:hover {
+            color: #C5221F;
         }
 
         /* Tab Layout for Disciplines */
@@ -635,7 +652,7 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#announcements-section">Announcements</a></li>
-                <li><a href="#events">Disciplines</a></li>
+                <li><a href="#events">UIL Stem Information</a></li>
                 <li><a href="#calendar">Calendar</a></li>
                 <li><a href="#schedule">Schedule & Rooms</a></li>
                 <li><a href="https://drive.google.com/drive/u/1/folders/1W1ZLO5xcrERpWpey8FBQZYASla3-YFeF" target="_blank">Master Drive</a></li>
@@ -647,7 +664,7 @@
     <section class="hero" id="hero-section">
         <div class="hero-container">
             <p class="hero-eyebrow">Stony Point High School</p>
-            <h1 class="hero-title">UIL Math Academics</h1>
+            <h1 class="hero-title">UIL STEM Academics</h1>
             <p class="hero-subtitle">Official hub for practice schedules, team coaches, room locations, and competition resources for Number Sense, Calculator Applications, and Mathematics.</p>
         </div>
     </section>
@@ -675,7 +692,7 @@
         <section id="events">
             <div class="section-header">
                 <div>
-                    <h2>UIL Math Disciplines & Coaches</h2>
+                    <h2>UIL Stem information</h2>
                     <p>Select a category to view meeting times, room numbers, and team details.</p>
                 </div>
             </div>
@@ -821,7 +838,7 @@
             <div class="section-header">
                 <div>
                     <h2>Weekly Practice & Room Schedule</h2>
-                    <p>Updated team meeting times and room locations for math disciplines.</p>
+                    <p>Updated team meeting times and room locations for STEM disciplines.</p>
                 </div>
             </div>
             <table class="schedule-table">
@@ -890,6 +907,64 @@
     </footer>
 
     <script>
+        // Load Announcements on Page Load
+        document.addEventListener('DOMContentLoaded', loadAnnouncements);
+
+        function loadAnnouncements() {
+            const announcements = JSON.parse(localStorage.getItem('stp_announcements') || '[]');
+            const list = document.getElementById('announcements-list');
+
+            if (announcements.length > 0) {
+                list.innerHTML = '';
+                announcements.forEach((ann, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'announcement-card';
+                    card.innerHTML = `
+                        <button class="btn-delete-ann" onclick="deleteAnnouncement(${index})">Delete</button>
+                        <h4>${escapeHtml(ann.title)}</h4>
+                        <div class="ann-meta">Posted on ${ann.date}</div>
+                        <p>${escapeHtml(ann.body)}</p>
+                    `;
+                    list.appendChild(card);
+                });
+            } else {
+                list.innerHTML = `<div class="empty-announcements" id="empty-msg">No current announcements.</div>`;
+            }
+        }
+
+        function submitAnnouncement() {
+            const title = document.getElementById('modal-title').value.trim();
+            const body = document.getElementById('modal-body').value.trim();
+
+            if (!title || !body) {
+                alert('Please fill out both the title and details.');
+                return;
+            }
+
+            const today = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            const newAnn = { title, body, date: today };
+
+            const announcements = JSON.parse(localStorage.getItem('stp_announcements') || '[]');
+            announcements.unshift(newAnn);
+            localStorage.setItem('stp_announcements', JSON.stringify(announcements));
+
+            loadAnnouncements();
+            closeModal();
+        }
+
+        function deleteAnnouncement(index) {
+            let announcements = JSON.parse(localStorage.getItem('stp_announcements') || '[]');
+            announcements.splice(index, 1);
+            localStorage.setItem('stp_announcements', JSON.stringify(announcements));
+            loadAnnouncements();
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+
         // Tab Switching Logic
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
@@ -930,35 +1005,6 @@
             document.getElementById('announcement-modal').style.display = 'none';
             document.getElementById('modal-title').value = '';
             document.getElementById('modal-body').value = '';
-        }
-
-        function submitAnnouncement() {
-            const title = document.getElementById('modal-title').value.trim();
-            const body = document.getElementById('modal-body').value.trim();
-
-            if (!title || !body) {
-                alert('Please fill out both the title and details.');
-                return;
-            }
-
-            const emptyMsg = document.getElementById('empty-msg');
-            if (emptyMsg) {
-                emptyMsg.style.display = 'none';
-            }
-
-            const list = document.getElementById('announcements-list');
-            const today = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-
-            const card = document.createElement('div');
-            card.className = 'announcement-card';
-            card.innerHTML = `
-                <h4>${title}</h4>
-                <div class="ann-meta">Posted on ${today}</div>
-                <p>${body}</p>
-            `;
-
-            list.prepend(card);
-            closeModal();
         }
     </script>
 </body>
